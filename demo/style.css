@@ -1,0 +1,9 @@
+h1{
+    color:crimson;
+    font-weight: 500;
+    transition: 0.75s ease-in;
+}
+h1:hover{
+    padding-left: 2rem;
+    color:blue;
+}
