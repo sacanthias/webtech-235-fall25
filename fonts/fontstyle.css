@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Zen Maru';
+    font-style: normal;
+    font-weight: 400;
+    src: url(zen-maru-gothic\ZenMaruGothic-Regular.ttf) format('tff');
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url(playfair\PlayfairDisplay-VariableFont_wght.ttf) format('tff');
+}
+
+@font-face {
+    font-family: 'Playfair Legacy';
+    src: url(\playfair\static\PlayfairDisplay-Regular.ttf) format('tff');
+}
