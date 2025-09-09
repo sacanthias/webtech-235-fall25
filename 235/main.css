@@ -14,33 +14,44 @@ body {
 }
 
 .aside {
-  flex: 0 0 1;
+  flex: 0 0 auto;
   max-width: 100%;
   border: 2px solid brown;
   padding: 1.5rem;
 }
 
 #center {
-  flex: 0 0 1;
+  flex: 0 0 auto;
   max-width: 100%;
 }
 
 #content-row {
-  -moz-column-gap: 2rem;
-       column-gap: 2rem;
+  column-gap: 2rem;
+  display: block;
+  border: 2px blue solid;
+  padding: 15px;
 }
 
 /** DESKTOP STYLING **/
-@media screen and (min-width: 780px) {
+@media screen and (min-width: 992px) {
   #main {
     padding: 0 50px;
   }
   .aside {
-    flex: 0 0 33.3333333333;
-    max-width: 33.3333333333;
+    flex: 0 0 auto;
+    max-width: 16.6666666667%;
+  }
+  #left {
+    margin-left: -2rem;
+  }
+  #right {
+    margin-right: -2rem;
   }
   #center {
-    flex: auto;
-    max-width: auto;
+    flex: 1 0 0;
   }
-}/*# sourceMappingURL=main.css.map */
+  #content-row {
+    display: flex;
+  }
+}
+/**  **//*# sourceMappingURL=main.css.map */
