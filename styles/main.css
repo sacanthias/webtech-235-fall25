@@ -1,6 +1,8 @@
 @import "fontstyle.css";
 body {
-  font-family: "Zen Maru Gothic", serif;
+  font-family: "Zen Maru Gothic", sans-serif;
+  background-color: #E4E0E1;
+  color: #181C14;
 }
 
 .row {
@@ -16,8 +18,9 @@ body {
 .aside {
   flex: 0 0 auto;
   max-width: 100%;
-  border: 2px solid brown;
+  border: 1px solid #181C14;
   padding: 1.5rem;
+  background-color: #E4E0E1;
 }
 
 #center {
@@ -29,14 +32,14 @@ body {
   -moz-column-gap: 2rem;
        column-gap: 2rem;
   display: block;
-  border: 2px blue solid;
+  border: 1px #181C14 solid;
   padding: 15px;
 }
 
 /** DESKTOP STYLING **/
 @media screen and (min-width: 992px) {
   #main {
-    padding: 0 50px;
+    padding: 50px 100px;
   }
   .aside {
     flex: 0 0 auto;
