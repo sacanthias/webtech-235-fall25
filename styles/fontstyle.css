@@ -1,0 +1,25 @@
+@font-face {
+    font-family: "Zen Maru Gothic";
+    src: url(/fonts/zen-maru-gothic/ZenMaruGothic-Regular.ttf) format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url(/fonts/playfair/PlayfairDisplay-VariableFont_wght.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Playfair Legacy';
+    src: url(/fonts/playfair/static/PlayfairDisplay-Regular.ttf) format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Bagel Fat';
+    src: url(/fonts/bagel-fat/BagelFatOne-Regular.ttf) format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
