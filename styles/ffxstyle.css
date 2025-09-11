@@ -1,7 +1,8 @@
 @import "fontstyle.css";
+@import url('https://fonts.googleapis.com/css2?family=Shizuru&family=Yomogi&family=Yusei+Magic&family=Zen+Kurenaido&family=Zen+Maru+Gothic&display=swap');
 
 body{
-    font-family: 'Zen Maru Gothic', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Zen Maru Gothic", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #container{
@@ -9,22 +10,68 @@ body{
     flex-direction: row;
     column-gap: 2rem;
     flex-wrap: wrap;
+    padding:75px;
+    justify-content: space-around;
 }
 
+/* sidebar */
 #aside{
-    flex: 0 0 20%;
-    max-width: 20%;
+    position: sticky;
+    top:1rem;
+    background-color: cadetblue;
+    padding:10px 20px;
+    width:100%;
+
 }
 
+/* nav */
+ul.nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding:0;
+}
+
+li.nav-item{
+    padding:5px;
+    margin: 5px 0;
+    background-color: azure;
+    transition: background-color 0.6s ease-out;
+}
+
+li.nav-item:hover{
+    background-color: blanchedalmond;
+}
+
+li.nav-item::marker{
+    font-size:0px;
+}
+
+a.nav-link{
+    display: block;
+    text-align: center;
+}
+
+/* body content */
 #main{
-    flex: 0 0 1;
-    /* max-width: 75%; */
+    background-color: thistle;
+
 }
 
 #content{
     padding: 75px;
 }
 
+header{
+    padding: 50px;
+}
+
+footer{
+    flex: 0 0 auto;
+    max-width: 100vw;
+}
+
+/* non-header section styling */
 section{
     padding:10px;
     border:1px solid;
@@ -43,7 +90,8 @@ section{
 
 .img-section img{
     flex:0 0 auto;
-    max-width:40%
+    max-width:40%;
+    object-fit:cover;
 }
 
 .img-section img.left{
@@ -53,4 +101,30 @@ section{
 .img-section img.right{
     padding-left:2rem;
     order:2;
+}
+
+/* individual element styling 4 flava */
+a{
+    text-decoration: none;
+}
+
+/* flexbox media queries */
+@media (min-width:1200px){
+    #aside{
+        flex: 1 0 auto;
+        max-width: 20%;
+        height:calc(100vh - 4rem);
+        display: flex;
+        flex-direction: column;
+    }
+
+    #main{
+        flex: 0 1 auto;
+        max-width: 80%;
+    }
+
+    ul.nav{
+        display: flex;
+        flex-direction: column;
+    }
 }
