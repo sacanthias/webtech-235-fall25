@@ -1,0 +1,56 @@
+@import "fontstyle.css";
+
+body{
+    font-family: 'Zen Maru Gothic', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#container{
+    display: flex;
+    flex-direction: row;
+    column-gap: 2rem;
+    flex-wrap: wrap;
+}
+
+#aside{
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+
+#main{
+    flex: 0 0 1;
+    /* max-width: 75%; */
+}
+
+#content{
+    padding: 75px;
+}
+
+section{
+    padding:10px;
+    border:1px solid;
+    margin:2rem 0;
+}
+
+.img-section{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.flex-content{
+    flex: 0 0 1;
+}
+
+.img-section img{
+    flex:0 0 auto;
+    max-width:40%
+}
+
+.img-section img.left{
+    padding-right:2rem;
+}
+
+.img-section img.right{
+    padding-left:2rem;
+    order:2;
+}
