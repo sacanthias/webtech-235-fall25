@@ -3,25 +3,30 @@
 
 body{
     font-family: "Zen Maru Gothic", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    margin:0;
 }
 
 #container{
     display: flex;
     flex-direction: row;
-    column-gap: 2rem;
     flex-wrap: wrap;
-    padding:75px;
+    padding:40px 20px;
     justify-content: space-around;
+    box-shadow: inset 0px 0px 10px gray;
+    padding:20px
 }
 
 /* sidebar */
 #aside{
     position: sticky;
-    top:1rem;
-    background-color: cadetblue;
+    top:0;
     padding:10px 20px;
     width:100%;
-
+    background-color: #F9F9F9;
+    z-index: 2;
+    box-shadow: 0 9px 10px rgba(0, 0, 0, 0.1);
+    margin:-20px;
 }
 
 /* nav */
@@ -32,90 +37,202 @@ ul.nav{
     padding:0;
 }
 
-li.nav-item{
-    padding:5px;
-    margin: 5px 0;
-    background-color: azure;
-    transition: background-color 0.6s ease-out;
+.nav h2{
+    font-size: 2.5rem;
 }
 
-li.nav-item:hover{
-    background-color: blanchedalmond;
+li.nav-item{
+    padding:5px 10px;
 }
 
 li.nav-item::marker{
     font-size:0px;
 }
 
-a.nav-link{
-    display: block;
+.nav .nav-item a.nav-link{
     text-align: center;
+    display: inline-block;
+    position:relative;
+    color: initial;
+}
+
+.nav .nav-item a.nav-link:hover{
+    text-decoration: none!important;
+}
+
+.nav .nav-item a.nav-link::after{
+    content:'';
+    height: 0.4em;
+    background-color: rgb(154, 185, 234, 0.3);
+    display: block;
+    position: absolute;
+    width: 0;
+    bottom: 0;
+    right: 0;
+    transition: width 1s ease-in-out;
+    z-index: -1;
+}
+
+.nav .nav-item a.nav-link:hover::after{
+    width: 100%;
 }
 
 /* body content */
-#main{
-    background-color: thistle;
-
+#container{
+    /* background-color: thistle; */
+    background-color: #F9F9F9;
 }
 
 #content{
-    padding: 75px;
+    padding: 0 75px;
+}
+
+img.full-width{
+    width: 100%;
+    filter:drop-shadow(-1px -1px 4px grey)
+}
+
+header, footer{
+    max-width: 100vw;
+    padding:30px 75px 40px;
+    border-top:1px solid; 
 }
 
 header{
-    padding: 50px;
+    border-width: 0 0 1px 0;
+    overflow: hidden;
+    position: relative;
 }
 
-footer{
-    flex: 0 0 auto;
-    max-width: 100vw;
+#title{
+    font-family: serif;
+    font-size:2em;
+    text-align: center;
+}
+
+header img{
+    width: 100%;
+}
+
+header hr{
+    display: none;
 }
 
 /* non-header section styling */
 section{
-    padding:10px;
+    padding:10px 20px 20px 20px;
     border:1px solid;
-    margin:2rem 0;
+    margin:4rem 0;
+    box-shadow:10px 10px #D0A8D4;
+    transition: box-shadow 0.2s ease-in;
+}
+
+section:hover{
+    box-shadow: 20px 20px #D0A8D4;
+}
+
+section h2{
+    display: inline-block;
+    background: #F9F9F9;
+    padding: 5px 5px 3px;
+    padding-top: 5px;
+    margin: 0;
+    margin-top: 0px;
+    margin-top: -30px;
+    padding-top: 0;
+    position: absolute;
+    border: none;
 }
 
 .img-section{
-    display: flex;
-    flex-direction: row;
-    
+    display: block;
+    border:none;
+    padding:0;
+    box-shadow: none;
+}
+
+
+.img-section:hover{
+    box-shadow: none;
 }
 
 .flex-content{
     flex: 0 0 1;
+    padding: 10px 20px 20px 20px;
+    border:1px solid;
+    box-shadow:10px 10px #D0A8D4;
+    transition: box-shadow 0.2s ease-in;
+    text-align: justify;
+}
+
+.flex-content:hover{
+    box-shadow: 20px 20px #D0A8D4;
 }
 
 .img-section img{
     flex:0 0 auto;
-    max-width:40%;
     object-fit:cover;
+    width:100%;
+    padding:10px 0;
 }
 
-.img-section img.left{
-    padding-right:2rem;
-}
 
-.img-section img.right{
-    padding-left:2rem;
-    order:2;
-}
-
-/* individual element styling 4 flava */
-a{
-    text-decoration: none;
+#quote{
+    margin-bottom: 0;
 }
 
 /* flexbox media queries */
 @media (min-width:1200px){
+    #title{
+        position: absolute;
+        animation: slide-in-left ease-in-out 10s, title-load-in ease 15s;
+        text-shadow: -2px 0px white, 2px 0px white, 0px -2px white, 0 2px white;
+        font-family: serif;
+        font-weight: bold;
+        align-self: center;
+        font-size: 9.5rem;
+        top: 15%;
+        right: 3rem;
+        left:25%;
+        text-align:left;
+    }
+
+    header hr{
+        display: inline-block;
+        animation: extend-left ease-in-out 8s, load-in ease 15s;
+        height:3px;
+        background-color: black;
+        width: 70%;
+        position: absolute;
+        right: 5rem;
+        bottom: 43%;
+        margin: none !important;
+    }
+
+    
+    header img{
+        height: 95vh;
+        animation: load-in 3s ease-in;
+        width: auto;
+    }
+
+    #container{
+        padding:75px;
+    }
+
     #aside{
-        flex: 1 0 auto;
+        flex: 1 0;
         max-width: 20%;
         height:calc(100vh - 4rem);
+        top:1.5rem;
         display: flex;
         flex-direction: column;
+        border-right: 1px dashed;
+        padding-right:2rem;
+        justify-content: center;
+        align-items: center;
+        box-shadow: none;
+        margin:none;
     }
 
     #main{
@@ -123,8 +240,118 @@ a{
         max-width: 80%;
     }
 
+    #container{
+        padding:75px
+    }
+
     ul.nav{
         display: flex;
         flex-direction: column;
+        width: 100%;
+    }
+
+    li.nav-item{
+        text-align: right;
+        margin: 5px 0;
+    }
+
+    .img-section{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .img-section img{
+        max-width:40%;
+        padding: 0px 20px;
+    }
+    
+    .img-section img.left{
+        padding-right:2rem;
+    }
+
+    .img-section img.right{
+        padding-left:2rem;
+        order:2;
+    }
+}
+
+/* individual element styling 4 flava */
+a{
+    text-decoration: none;
+    color:#D0A8D4
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+a:visited{
+    color:#7296d0
+}
+
+blockquote{
+    font-style: italic;
+    border-left:5px solid grey;
+    margin-left:0;
+    padding-left:40px;
+}
+
+hr{
+    margin:50px 0;
+}
+
+h2, h3, footer h1{
+    margin:0;
+    font-family: 'Shizuru', cursive;
+}
+
+footer p{
+    margin:5px 0;
+}
+
+::selection{
+    background-color: rgb(154, 185, 234, 0.3);
+}
+
+/* animation keyframes */
+@keyframes load-in {
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-left{
+    from{
+        left: -100%;
+    }
+
+    to{
+        left: 25%;
+    }
+}
+
+@keyframes title-load-in {
+    25%{
+        opacity: 0;
+    }
+
+    50%{
+        opacity:0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes extend-left {
+    from{
+        width:0;
+    }
+    to{
+        width:70%;
     }
 }
