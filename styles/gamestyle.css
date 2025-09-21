@@ -1,10 +1,25 @@
 @import "fontstyle.css";
 
 body{
-    background-color: #E4E0E1;
+    background: #6d5c61 url(../235/game/images/arabesque.png);
     padding:50px;
     font-family:'Zen Maru Gothic', sans-serif;
     color:#493628;
+}
+
+main{
+    border:2px dashed #89A8B2;
+}
+
+main, header, footer{
+    background-color: #E4E0E1;
+    margin:1rem auto;
+    padding:1rem;
+    width:calc(100vw * 4 / 5);
+}
+
+footer a{
+    display: block;
 }
 
 h1 { 
