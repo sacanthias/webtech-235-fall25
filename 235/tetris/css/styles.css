@@ -1,0 +1,17 @@
+figure{
+    max-width: 650px;
+    margin:0 auto;
+}
+
+figure img{
+    width: 100%;
+}
+
+header, main, footer{
+    width:90vw;
+} 
+
+#tetlist{
+    display: flex;
+    
+}
