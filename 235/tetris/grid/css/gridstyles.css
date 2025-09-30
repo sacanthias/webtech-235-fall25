@@ -32,12 +32,6 @@ ul.menu {
     width: 25%;
 }
 
-@media screen and (max-width: 550px) {
-	.menu li {
-		width: 100%;
-	}
-}
-
 .menu a {
     display: block;
     background: gray;
@@ -51,11 +45,32 @@ ul.menu {
 	color: yellow;
 }
 
+ul.menu ul li {
+    width:100%;
+}
+ul.menu ul {
+    display:none;
+}
+ul.menu li:hover ul {
+    display:flex;
+}
+
+.menu .submenu li>a:hover {
+    background:red;
+    color:yellow;
+}
+.menu .submenu>a:after {
+    content: "+";
+    padding-left:5px;
+}
+
 #introduction { 
     grid-area: intro; 
     padding:2rem;
 }
+
 #tetgrid { grid-area: playground; }
+
 footer { grid-area: footer; }
 
 @media screen and (min-width:850px){
@@ -69,4 +84,16 @@ footer { grid-area: footer; }
         grid-template-columns: 500px 1fr;
         grid-template-rows: 345px 1fr;
     }
+
+    #tetgrid {
+        display: grid;
+        grid-template-columns: repeat(6, 100px);
+        grid-template-rows: repeat(6, 100px);
+    }
+}
+
+@media screen and (max-width: 550px) {
+	.menu li {
+		width: 100%;
+	}
 }
