@@ -1,0 +1,35 @@
+#wrapper{
+    display: grid;
+    grid-template-rows: 5;
+    grid-template-columns: 1;
+    grid-template-areas:
+        "ocean"
+        "oyster"
+        "clam"
+        "shrimp"
+        "harpoon";
+    min-height: 100vh;
+
+    div{
+        border:1px solid;
+        padding:1rem;
+    }
+}
+
+#ocean{grid-area: ocean;}
+#oyster{grid-area: oyster;}
+#clam{grid-area: clam;}
+#shrimp{grid-area: shrimp;}
+#harpoon{grid-area: harpoon;}
+
+@media screen and (min-width:992px){
+    #wrapper{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 60% 40%;
+        grid-template-areas:
+            "oyster oyster ocean  ocean"
+            "clam   shrimp shrimp harpoon";
+        max-width: 750px;
+        margin:0 auto
+    }
+}
