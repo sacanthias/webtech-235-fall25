@@ -1,0 +1,91 @@
+/* Link states */
+a:link {
+    text-decoration: none;
+    color:#1591EA; 
+} 
+/* and four more */
+a:visited{
+    color:#384959;
+}
+
+a:hover{
+    color:#274AB3;
+    text-decoration: underline;
+}
+
+a:focus{
+    outline: 2px solid #ffa500;
+}
+
+a:active{
+    color:red;
+}
+
+/* Header styling */
+header {
+    background-color: burlywood;
+    border:2px solid gray;
+    padding:20px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+/* Footer styling */
+footer {
+    background-color: #384959;
+    color:white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Main content */
+main {
+    padding: 20px;
+}
+
+/* Feel free to add any additional CSS rules that you need */
+#meeple-img{
+    max-width: 500px;
+    float:left;
+    margin:20px 0;
+}
+
+main :not(#meeple-img){
+    clear:left;
+}
+
+main p:nth-child(1){
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* Game list styling using flexbox or grid */
+.game-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 1rem;
+    column-gap: 1rem;
+}
+  
+.game {
+    text-align: center;
+    background-color: #f3f3f3;
+    border:1px solid #384959;
+    padding:10px;
+    clear: none !important;
+    border-radius: .5rem;
+}
+
+@media screen and (min-width:850px) {
+    .game{
+        max-width: calc((100vw - 40px) / 5);
+    }
+}
+  
+.game h3 {
+    color: chocolate;
+    font-size: 1.2rem;
+}
+  
