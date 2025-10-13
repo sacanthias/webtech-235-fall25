@@ -1,35 +1,470 @@
+// @imports
+// importing bootstrap icons
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+// importing fontawesome icons
+@import url(/fontawesome/css/regular.css);
+@import url(/fontawesome/css/solid.css);
+
+// importing fonts
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Caveat:wght@400..700&family=Noto+Sans:ital,wdth,wght@0,87.5,100..900;1,87.5,100..900&display=swap');
+
+// sass variables
+$bg-main: #fff;
+$body-txt: semi-condensed 400 12px/1.1 'Noto Sans', sans-serif;
+$handwriting: 600 1rem 'Caveat', cursive;
+$accent-txt: 400 1rem 'Cabin Sketch', sans-serif;
+$green: #ADB753;
+
+body{
+    text-align: justify;
+    font: $body-txt;
+    background-color: $bg-main;
+}
+
+h1, h2, h3 {
+    font-size:1.3rem;
+}
+
+h1, h2, h3, h4, h5, h6, p{
+    margin-bottom: 0.25rem;
+    margin-top:0
+}
+
+.img{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: start;
+}
+
+img{
+    object-fit: cover;
+}
+
+.underlined{
+    text-decoration: underline $green 2px;
+}
+
+.highlighted{
+    background-color: rgba($green, $alpha: 0.3);
+}
+
+.accented{
+    color: $green;
+}
+
+.accent-oval{
+    border: 4px double;
+    padding: 1.5rem 0.5rem !important;
+    border-radius: 2rem;
+    color: $green;
+    font-weight: 800;
+}
+
+.accent-text{
+    font: $accent-txt;
+    font-size:1.3rem;
+}
+
+.post-it{
+    border: 2px solid;
+    padding: .5rem 1rem;
+    background: $bg-main;
+    font-size: 0.85em;
+
+    .header{
+        font-size: 1.1em;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    hr{
+        margin: 0.5rem -1rem;
+    }
+
+    &::before{
+        content:'\f276';  
+        font-family: 'Font Awesome 7 Free';
+        display: inline-block;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        color: $green;
+        position: absolute;
+        background: #fff;
+        top: -0.3rem;
+    }
+}
+
+.vertical-text{
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    margin: 0;
+    padding: 0.25rem 0.125rem;
+    background-color: $bg-main;
+}
+
+.handwritten-text{
+    font: $handwriting;
+    position: absolute;
+}
+
+.row{
+    display: flex;
+    flex-flow: row nowrap;
+    position: relative;
+}
+
 #wrapper{
     display: grid;
     grid-template-rows: 5;
     grid-template-columns: 1;
     grid-template-areas:
-        "ocean"
-        "oyster"
-        "clam"
-        "shrimp"
-        "harpoon";
+        "tright"
+        "tleft"
+        "blside"
+        "bcenter"
+        "brside";
     min-height: 100vh;
 
-    div{
-        border:1px solid;
-        padding:1rem;
+    >div{
+        //border:1px solid;
+        padding:1.5rem 1rem 1rem;
     }
 }
 
-#ocean{grid-area: ocean;}
-#oyster{grid-area: oyster;}
-#clam{grid-area: clam;}
-#shrimp{grid-area: shrimp;}
-#harpoon{grid-area: harpoon;}
+// top right section
+#ocean{
+    grid-area: tright;
+    background: url(../media/ocean-bg.jpg) center / cover;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 2rem;
+
+    div{
+        position: relative;
+        padding: 2rem;
+
+        .popout{
+            position: absolute;
+            right:-1rem;
+            top:-1rem;
+
+        }
+
+        header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom:1rem;
+            
+            h1{
+                text-align: center;
+                font-weight: 500;
+                margin-left: 0.5rem;
+            }
+        }
+    
+        p{
+            background-color: rgba(255,255,255,0.33);
+            padding:5px;
+        }
+    }
+}  
+
+// top left section
+div#oyster{
+    grid-area: tleft;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 40% 25% 35%;
+    grid-template-areas: 
+        "primary   primary    primary    primary    primary primary"
+        "blank     img-center img-center img-center right   right"
+        "img-aside text-center text-center text-center right   right"
+        ;
+    padding: 4.25rem .75rem .75rem 4.75rem !important;
+    position: relative;
+
+    >div{
+        padding: .25rem;
+    }
+
+    #page-details{
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        font-size: 0.8em;
+        text-transform: uppercase;
+    }
+    
+    #oyster-primary-img{
+        grid-area: primary;
+
+        .img{
+            height: 100%;
+            background: url(../media/ocean-bg.jpg) center / cover;
+            display: flex;
+        }
+    }
+
+    // #oyster-left{
+    //     grid-area: blank;
+    //     grid-column: 1/span 2;
+    //     display: flex;
+    //     align-items: center;
+
+    //     img{
+    //         height: 50%;
+    //         margin-left: -1rem;
+    //         margin-top: 30px;
+    //     }
+    // }
+
+    #oyster-img-aside{
+        grid-area: img-aside;
+        grid-column: 1 / span 2;
+        display: flex;
+        align-items: center;
+
+        img{
+            height: 70%;
+            width: 90%;
+            margin-left: -5rem;
+            margin-top: -1rem;
+        }
+    }
+
+    #oyster-center-img{
+        grid-area: img-center;
+        display: flex;
+        flex-flow: column;
+
+        .top-img{
+            background: url(../media/ocean-bg.jpg);
+            width: calc(100% + 2rem);
+            margin-left: -2rem;
+            height: 100%;
+        }
+
+        .img{
+            height: 50%
+        }
+    }
+
+    #oyster-center-text{
+        grid-area: text-center;
+        display: flex;
+        flex-direction: column;
+
+        .img{
+            align-items: end;
+            justify-content: start;
+            background: url(../media/ocean-bg.jpg) center / cover;
+            margin-bottom: 0.25rem;
+
+            h2{
+                font-size:0.9rem;
+                margin-top: -2rem;
+                font-weight: 300;
+            }
+        }
+
+        p{
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+    }
+
+    #oyster-right{
+        grid-area: right;
+        display: flex;
+        flex-flow: column;
+        position: relative;
+
+        img{
+            height: 50%;
+        }
+
+        .post-it{
+            position:absolute;
+            margin-right: -5rem;
+            left: 1rem;
+            bottom: 1rem;
+            right: 2rem;
+        }
+    }
+    
+    img{
+        width:100%;
+        height:100%;
+        object-fit: cover;
+    }
+}
+
+// bottom left sidebar
+#clam{
+    grid-area: blside;
+    display: flex;
+    flex-flow: column;
+    position: relative;
+
+    img{
+        width:100%;
+        height:100%;
+    }
+
+    hr{
+        border: 1px solid;
+        height: 1rem;
+        width: calc(100% - 2rem);
+        position: absolute;
+
+        &.top{
+            border-width: 1px 1px 0 1px;
+            border-radius: 0.5rem 0.5rem 0 0;
+            top: 0.5rem;
+        }
+
+        &.bottom{
+            border-width: 0 1px 1px 1px;
+            border-radius: 0 0 0.5rem 0.5rem;
+            bottom:0.5rem;
+        }
+    }
+
+    >div{
+        flex:1 1 auto;
+        padding:1rem;
+
+        h4, h3{
+            text-align: center;
+        }
+
+        #divider-img{
+            height: 100px;
+            margin: 0.5rem 0;
+            width: 90%;
+        }
+
+        .row{
+            align-items: end;
+            justify-content: end;
+            position: relative;
+            margin-bottom: 0.5rem;
+
+            .handwritten-text{
+                left: -2rem;
+                top: 0;
+                transform: rotate(-15deg);
+            }
+
+            #transparent{
+                width: 70px;
+                left: -1rem;
+                position: absolute;
+                height: 70px;
+            }
+
+            img:not(#transparent){
+                height: 90px;
+                width: 70%;
+            }
+        }
+    }
+}
+
+// bottom center section
+#shrimp{
+    grid-area: bcenter;
+    position: relative;
+
+    .img.focal{
+        height:60%;
+        width:100%;
+        background: url(../media/steamedshrimp.png) center / cover;
+        justify-content: start;
+
+        .cut-in{
+            background-color: $bg-main;
+            font-weight: 300;
+            margin-top: 0.5rem;
+            padding:0.125rem;
+        }
+    }
+
+    .post-it{
+        position: absolute;
+        width: 30%;
+        bottom: 4rem;
+        left: 2rem;
+    }
+
+    .row#shrimp-text{
+        justify-content: end;
+        padding-top: 1rem;
+        margin-right: -0.5rem;
+
+        >.row{
+            flex: 0 0 45%;
+            max-width: 45%;
+        }
+
+        p{
+            flex: 0 0 20%;
+            padding-bottom: 1rem !important;
+            padding: 0.5rem
+        }
+
+        img{
+            max-width: 25%;
+            flex: 0 0 25%;
+            padding: 0.5rem
+        }
+    }
+}
+
+#harpoon{
+    grid-area: brside;
+
+    .row{
+        padding: 0 1rem 1rem;
+    }
+
+    h2.vertical-text{
+        max-height: 13%;
+        text-align: left;
+    }
+
+    .accent-oval{
+        position: absolute;
+        right: 1.5rem;
+    }
+
+    span.float-right{
+        float: right;
+        margin-top: -1rem;
+        margin-left: 0.5rem;
+
+        img{
+            height:70px;
+            width: 70px;
+        }
+    }
+}
 
 @media screen and (min-width:992px){
     #wrapper{
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 60% 40%;
+        grid-template-rows: 55% 45%;
         grid-template-areas:
-            "oyster oyster ocean  ocean"
-            "clam   shrimp shrimp harpoon";
-        max-width: 750px;
-        margin:0 auto
+            "tleft    tleft   tright  tright"
+            "blside   bcenter bcenter brside";
+        max-width: 920px;
+        min-height: 1179px;
+        margin:0 auto;
     }
 }
