@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Default</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+    <div class="carousel">
+        <a class="carousel-item" href="#"><img src="https://dummyimage.com/500x300/ffbfff/000000&text=Slide+1"></a>
+        <a class="carousel-item" href="#"><img src="https://dummyimage.com/500x300/ffbfff/000000&text=Slide+2"></a>
+        <a class="carousel-item" href="#"><img src="https://dummyimage.com/500x300/ffbfff/000000&text=Slide+3"></a>
+        <a class="carousel-item" href="#"><img src="https://dummyimage.com/500x300/ffbfff/000000&text=Slide+4"></a>
+        <a class="carousel-item" href="#"><img src="https://dummyimage.com/500x300/ffbfff/000000&text=Slide+5"></a>
+    </div>
+</body>
+
+    <script>
+        var elems = document.querySelectorAll('.carousel');
+        var instances = M.Carousel.init(elems);                
+    </script>
+</html>
