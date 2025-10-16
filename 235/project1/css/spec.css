@@ -1,0 +1,401 @@
+/* ==== ICON IMPORTS ===== */
+@import url(/fontawesome/css/regular.css);
+@import url(/fontawesome/css/solid.css);
+
+/* ==== FONT IMPORTS ==== */
+@import url("https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Caveat:wght@400..700&family=Noto+Sans:ital,wdth,wght@0,87.5,100..900;1,87.5,100..900&display=swap");
+
+/* ==== ELEMENT STYLING ==== */
+body {
+  text-align: justify;
+  font: semi-condensed 400 12px/1.1 "Noto Sans", sans-serif;
+  background-color: #fff;
+}
+
+h1, h2, h3 {
+  font-size: 1.3rem;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin-bottom: 0.25rem;
+  margin-top: 0;
+}
+
+.img {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: start;
+}
+
+img {
+  object-fit: cover;
+}
+
+.underlined {
+  text-decoration: underline #ADB753 2px;
+}
+
+.highlighted {
+  background-color: rgba(173, 183, 83, 0.3);
+}
+
+.accented {
+  color: #ADB753;
+}
+
+.accent-oval {
+  border: 4px double;
+  padding: 1.5rem 0.5rem !important;
+  border-radius: 2rem;
+  color: #ADB753;
+  font-weight: 800;
+}
+
+.accent-text {
+  font: 400 1rem "Cabin Sketch", sans-serif;
+  font-size: 1.3rem;
+}
+
+.post-it {
+  border: 2px solid;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  font-size: 0.85em;
+}
+.post-it .header {
+  font-size: 1.1em;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.post-it hr {
+  margin: 0.5rem -1rem;
+}
+.post-it::before {
+  content: "\f276";
+  font-family: "Font Awesome 7 Free";
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  color: #ADB753;
+  position: absolute;
+  background: #fff;
+  top: -0.3rem;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  margin: 0;
+  padding: 0.25rem 0.125rem;
+  background-color: #fff;
+}
+
+.handwritten-text {
+  font: 600 1rem "Caveat", cursive;
+  position: absolute;
+}
+
+.row {
+  display: flex;
+  flex-flow: row nowrap;
+  position: relative;
+}
+
+
+/* ====== WRAPPER GRID ====== */
+#wrapper {
+  display: grid;
+  grid-template-rows: 5;
+  grid-template-columns: 1;
+  grid-template-areas: "tright" "tleft" "blside" "bcenter" "brside";
+  min-height: 100vh;
+}
+#wrapper > div {
+  padding: 1.5rem 1rem 1rem;
+}
+
+
+/* ===== TOP RIGHT QUADRANT ===== */
+#ocean {
+  grid-area: tright;
+  background: url(../media/ocean-bg.jpg) center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 2rem;
+}
+#ocean div {
+  position: relative;
+  padding: 2rem;
+}
+#ocean div .popout {
+  position: absolute;
+  right: -1rem;
+  top: -1rem;
+}
+#ocean div header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+#ocean div header h1 {
+  text-align: center;
+  font-weight: 500;
+  margin-left: 0.5rem;
+}
+#ocean div p {
+  background-color: rgba(255, 255, 255, 0.33);
+  padding: 5px;
+}
+
+
+
+/* ==== TOP LEFT QUADRANT ==== */
+div#oyster {
+  grid-area: tleft;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 40% 25% 35%;
+  grid-template-areas: "primary   primary    primary    primary    primary primary" "blank     img-center img-center img-center right   right" "img-aside text-center text-center text-center right   right";
+  padding: 4.25rem 0.75rem 0.75rem 4.75rem !important;
+  position: relative;
+}
+div#oyster > div {
+  padding: 0.25rem;
+}
+div#oyster #page-details {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+div#oyster #oyster-primary-img {
+  grid-area: primary;
+}
+div#oyster #oyster-primary-img .img {
+  height: 100%;
+  background: url(../media/ocean-bg.jpg) center/cover;
+  display: flex;
+}
+div#oyster #oyster-img-aside {
+  grid-area: img-aside;
+  grid-column: 1/span 2;
+  display: flex;
+  align-items: center;
+}
+div#oyster #oyster-img-aside img {
+  height: 70%;
+  width: 90%;
+  margin-left: -5rem;
+  margin-top: -1rem;
+}
+div#oyster #oyster-center-img {
+  grid-area: img-center;
+  display: flex;
+  flex-flow: column;
+}
+div#oyster #oyster-center-img .top-img {
+  background: url(../media/ocean-bg.jpg);
+  width: calc(100% + 2rem);
+  margin-left: -2rem;
+  height: 100%;
+}
+div#oyster #oyster-center-img .img {
+  height: 50%;
+}
+div#oyster #oyster-center-text {
+  grid-area: text-center;
+  display: flex;
+  flex-direction: column;
+}
+div#oyster #oyster-center-text .img {
+  align-items: end;
+  justify-content: start;
+  background: url(../media/ocean-bg.jpg) center/cover;
+  margin-bottom: 0.25rem;
+}
+div#oyster #oyster-center-text .img h2 {
+  font-size: 0.9rem;
+  margin-top: -2rem;
+  font-weight: 300;
+}
+div#oyster #oyster-center-text p {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+div#oyster #oyster-right {
+  grid-area: right;
+  display: flex;
+  flex-flow: column;
+  position: relative;
+}
+div#oyster #oyster-right img {
+  height: 50%;
+}
+div#oyster #oyster-right .post-it {
+  position: absolute;
+  margin-right: -5rem;
+  left: 1rem;
+  bottom: 1rem;
+  right: 2rem;
+}
+div#oyster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+/* ====== BOTTOM LEFT SIDEBAR ====== */
+#clam {
+  grid-area: blside;
+  display: flex;
+  flex-flow: column;
+  position: relative;
+}
+#clam img {
+  width: 100%;
+  height: 100%;
+}
+#clam hr {
+  border: 1px solid;
+  height: 1rem;
+  width: calc(100% - 2rem);
+  position: absolute;
+}
+#clam hr.top {
+  border-width: 1px 1px 0 1px;
+  border-radius: 0.5rem 0.5rem 0 0;
+  top: 0.5rem;
+}
+#clam hr.bottom {
+  border-width: 0 1px 1px 1px;
+  border-radius: 0 0 0.5rem 0.5rem;
+  bottom: 0.5rem;
+}
+#clam > div {
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+#clam > div h4, #clam > div h3 {
+  text-align: center;
+}
+#clam > div #divider-img {
+  height: 100px;
+  margin: 0.5rem 0;
+  width: 90%;
+}
+#clam > div .row {
+  align-items: end;
+  justify-content: end;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+#clam > div .row .handwritten-text {
+  left: -2rem;
+  top: 0;
+  transform: rotate(-15deg);
+}
+#clam > div .row #transparent {
+  width: 70px;
+  left: -1rem;
+  position: absolute;
+  height: 70px;
+}
+#clam > div .row img:not(#transparent) {
+  height: 90px;
+  width: 70%;
+}
+
+
+
+/* ====== BOTTOM CENTER SECTION ======= */
+#shrimp {
+  grid-area: bcenter;
+  position: relative;
+}
+#shrimp .img.focal {
+  height: 60%;
+  width: 100%;
+  background: url(../media/steamedshrimp.png) center/cover;
+  justify-content: start;
+}
+#shrimp .img.focal .cut-in {
+  background-color: #fff;
+  font-weight: 300;
+  margin-top: 0.5rem;
+  padding: 0.125rem;
+}
+#shrimp .post-it {
+  position: absolute;
+  width: 30%;
+  bottom: 4rem;
+  left: 2rem;
+}
+#shrimp .row#shrimp-text {
+  justify-content: end;
+  padding-top: 1rem;
+  margin-right: -0.5rem;
+}
+#shrimp .row#shrimp-text > .row {
+  flex: 0 0 45%;
+  max-width: 45%;
+}
+#shrimp .row#shrimp-text p {
+  flex: 0 0 20%;
+  padding-bottom: 1rem !important;
+  padding: 0.5rem;
+}
+#shrimp .row#shrimp-text img {
+  max-width: 25%;
+  flex: 0 0 25%;
+  padding: 0.5rem;
+}
+
+
+
+
+/* ====== BOTTOM RIGHT SIDEBAR ====== */
+#harpoon {
+  grid-area: brside;
+}
+#harpoon .row {
+  padding: 0 1rem 1rem;
+}
+#harpoon h2.vertical-text {
+  max-height: 35%;
+  text-align: left;
+}
+#harpoon .accent-oval {
+  position: absolute;
+  right: 1.5rem;
+}
+#harpoon span.float-right {
+  float: right;
+  margin-top: -1rem;
+  margin-left: 0.5rem;
+}
+#harpoon span.float-right img {
+  height: 70px;
+  width: 70px;
+}
+
+
+
+/* ===== DESKTOP & WIDESCREEN MEDIA QUERY ===== */
+@media screen and (min-width: 992px) {
+  #wrapper {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 55% 45%;
+    grid-template-areas: "tleft    tleft   tright  tright" "blside   bcenter bcenter brside";
+    max-width: 920px;
+    min-height: 1179px;
+    margin: 0 auto;
+  }
+}

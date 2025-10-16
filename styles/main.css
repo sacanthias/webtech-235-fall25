@@ -31,7 +31,8 @@ body {
 #profile-pic {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #center {
@@ -80,6 +81,10 @@ a:hover:visited {
   background-color: #B17F59 !important;
 }
 
+::-moz-selection {
+  background-color: #EEF1DA;
+}
+
 ::selection {
   background-color: #EEF1DA;
 }
@@ -105,7 +110,8 @@ li strong {
     flex-flow: column wrap;
   }
   .row {
-    column-gap: 2rem;
+    -moz-column-gap: 2rem;
+         column-gap: 2rem;
     display: flex;
     flex-flow: row wrap;
   }
