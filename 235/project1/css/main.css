@@ -1,7 +1,7 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
-@import url(/fontawesome/css/regular.css);
-@import url(/fontawesome/css/solid.css);
+@import url(/fontawesome/css/all.min.css);
 @import url("https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Caveat:wght@400..700&family=Noto+Sans:ital,wdth,wght@0,87.5,100..900;1,87.5,100..900&display=swap");
+@import url(normalize.css);
 body {
   text-align: justify;
   font: semi-condensed 400 12px/1.1 "Noto Sans", sans-serif;
@@ -23,16 +23,16 @@ h1, h2, h3, h4, h5, h6, p {
   display: flex;
   justify-content: end;
   align-items: start;
+  filter: grayscale(0.5) contrast(1.2);
 }
 
 img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
+  filter: grayscale(0.5) contrast(1.2);
 }
 
 .underlined {
-  -webkit-text-decoration: underline #ADB753 2px;
-          text-decoration: underline #ADB753 2px;
+  text-decoration: underline #ADB753 2px;
 }
 
 .highlighted {
@@ -61,6 +61,16 @@ img {
   padding: 0.5rem 1rem;
   background: #fff;
   font-size: 0.85em;
+  position: relative;
+  margin: 0;
+}
+.post-it i.fas.fa-map-pin {
+  position: absolute;
+  top: -0.6rem;
+  background: #fff;
+  color: #ADB753;
+  font-size: 1.4em;
+  padding-top: 0.125rem;
 }
 .post-it .header {
   font-size: 1.1em;
@@ -70,20 +80,9 @@ img {
 .post-it hr {
   margin: 0.5rem -1rem;
 }
-.post-it::before {
-  content: "\f276";
-  font-family: "Font Awesome 7 Free";
-  display: inline-block;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  color: #ADB753;
-  position: absolute;
-  background: #fff;
-  top: -0.3rem;
-}
 
 .vertical-text {
-  writing-mode: vertical-rl;
+  writing-mode: horizontal-tb;
   text-orientation: mixed;
   margin: 0;
   padding: 0.25rem 0.125rem;
@@ -92,13 +91,24 @@ img {
 
 .handwritten-text {
   font: 600 1rem "Caveat", cursive;
-  position: absolute;
+  display: none;
 }
 
 .row {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   position: relative;
+}
+
+nav.row {
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background-color: #fff;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
 }
 
 #wrapper {
@@ -114,11 +124,12 @@ img {
 
 #ocean {
   grid-area: tright;
-  background: url(../media/ocean-bg.jpg) center/cover;
+  background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(225, 248, 252) 5%, rgb(173, 183, 83) 100%), url(../media/ocean-bg.jpg) center/cover;
   display: flex;
   justify-content: center;
   align-items: start;
   padding: 2rem;
+  background-blend-mode: darken;
 }
 #ocean div {
   position: relative;
@@ -141,21 +152,21 @@ img {
   margin-left: 0.5rem;
 }
 #ocean div p {
-  background-color: rgba(255, 255, 255, 0.33);
+  background-color: rgba(255, 255, 255, 0.75);
   padding: 5px;
 }
 
 div#oyster {
   grid-area: tleft;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 40% 25% 35%;
-  grid-template-areas: "primary   primary    primary    primary    primary primary" "blank     img-center img-center img-center right   right" "img-aside text-center text-center text-center right   right";
-  padding: 4.25rem 0.75rem 0.75rem 4.75rem !important;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas: "primary" "right" "text-center" "img-aside" "img-center";
   position: relative;
 }
 div#oyster > div {
   padding: 0.25rem;
+  width: 100%;
 }
 div#oyster #page-details {
   position: absolute;
@@ -169,20 +180,18 @@ div#oyster #oyster-primary-img {
 }
 div#oyster #oyster-primary-img .img {
   height: 100%;
-  background: url(../media/ocean-bg.jpg) center/cover;
+  background: url(../../game/images/ff10-tidus-render.png) center/cover;
   display: flex;
 }
 div#oyster #oyster-img-aside {
   grid-area: img-aside;
-  grid-column: 1/span 2;
   display: flex;
   align-items: center;
 }
-div#oyster #oyster-img-aside img {
-  height: 70%;
-  width: 90%;
-  margin-left: -5rem;
-  margin-top: -1rem;
+div#oyster #oyster-img-aside .handwritten-text {
+  z-index: 2;
+  transform: rotate(15deg);
+  top: 67%;
 }
 div#oyster #oyster-center-img {
   grid-area: img-center;
@@ -190,7 +199,7 @@ div#oyster #oyster-center-img {
   flex-flow: column;
 }
 div#oyster #oyster-center-img .top-img {
-  background: url(../media/ocean-bg.jpg);
+  background: url(../media/etrian4.jpg);
   width: calc(100% + 2rem);
   margin-left: -2rem;
   height: 100%;
@@ -206,7 +215,7 @@ div#oyster #oyster-center-text {
 div#oyster #oyster-center-text .img {
   align-items: end;
   justify-content: start;
-  background: url(../media/ocean-bg.jpg) center/cover;
+  background: url(../media/etrian4.jpg) center/cover;
   margin-bottom: 0.25rem;
 }
 div#oyster #oyster-center-text .img h2 {
@@ -226,20 +235,12 @@ div#oyster #oyster-right {
   position: relative;
 }
 div#oyster #oyster-right img {
-  height: 50%;
-}
-div#oyster #oyster-right .post-it {
-  position: absolute;
-  margin-right: -5rem;
-  left: 1rem;
-  bottom: 1rem;
-  right: 2rem;
+  margin-bottom: 0.5rem;
 }
 div#oyster img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 #clam {
@@ -251,6 +252,16 @@ div#oyster img {
 #clam img {
   width: 100%;
   height: 100%;
+}
+#clam .body .underlined {
+  margin-bottom: 0.5rem;
+}
+#clam .body a {
+  display: block;
+  text-align: right;
+  position: relative;
+  bottom: 0;
+  color: #ADB753;
 }
 #clam hr {
   border: 1px solid;
@@ -296,6 +307,7 @@ div#oyster img {
   left: -1rem;
   position: absolute;
   height: 70px;
+  z-index: 2;
 }
 #clam > div .row img:not(#transparent) {
   height: 90px;
@@ -305,11 +317,14 @@ div#oyster img {
 #shrimp {
   grid-area: bcenter;
   position: relative;
+  display: grid;
+  grid-template-areas: "focal" "post" "text";
 }
 #shrimp .img.focal {
-  height: 60%;
+  grid-area: focal;
+  min-height: 200px;
   width: 100%;
-  background: url(../media/steamedshrimp.png) center/cover;
+  background: url(../media/genkaku.jpg) center/cover;
   justify-content: start;
 }
 #shrimp .img.focal .cut-in {
@@ -319,29 +334,22 @@ div#oyster img {
   padding: 0.125rem;
 }
 #shrimp .post-it {
-  position: absolute;
-  width: 30%;
-  bottom: 4rem;
-  left: 2rem;
+  grid-area: post;
+  margin-top: 1rem;
 }
 #shrimp .row#shrimp-text {
-  justify-content: end;
-  padding-top: 1rem;
-  margin-right: -0.5rem;
-}
-#shrimp .row#shrimp-text > .row {
-  flex: 0 0 45%;
-  max-width: 45%;
+  grid-area: text;
+  flex-direction: column-reverse;
 }
 #shrimp .row#shrimp-text p {
-  flex: 0 0 20%;
+  flex: 1 0 0;
   padding-bottom: 1rem !important;
-  padding: 0.5rem;
+  padding: 1rem 0;
 }
 #shrimp .row#shrimp-text img {
-  max-width: 25%;
-  flex: 0 0 25%;
-  padding: 0.5rem;
+  max-width: 100%;
+  flex: 0 0 auto;
+  padding: 1rem 0;
 }
 
 #harpoon {
@@ -349,26 +357,71 @@ div#oyster img {
 }
 #harpoon .row {
   padding: 0 1rem 1rem;
+  flex-flow: row-reverse nowrap;
 }
 #harpoon h2.vertical-text {
-  max-height: 13%;
+  max-height: 35%;
   text-align: left;
 }
 #harpoon .accent-oval {
-  position: absolute;
-  right: 1.5rem;
+  position: relative;
 }
 #harpoon span.float-right {
   float: right;
   margin-top: -1rem;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
 }
 #harpoon span.float-right img {
   height: 70px;
   width: 70px;
 }
 
+@media (min-width: 650px) {
+  div#oyster {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 40% 20% 40%;
+    grid-template-areas: "primary   primary" "img-center right" "text-center right";
+  }
+  div#oyster #oyster-img-aside {
+    display: none;
+  }
+  #shrimp {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    grid-template-rows: 55% 45%;
+    grid-template-areas: "focal focal" "post text";
+  }
+  #shrimp .row#shrimp-text {
+    grid-area: text;
+    margin: 0.5rem -0.5rem 0 0.5rem;
+    flex-direction: column-reverse;
+  }
+  #shrimp .row#shrimp-text p {
+    flex: 1 0 0;
+    padding-bottom: 1rem !important;
+    padding: 0.5rem;
+  }
+  #shrimp .row#shrimp-text img {
+    max-width: 50%;
+    flex: 0 0 auto;
+    padding: 0.5rem;
+  }
+}
 @media screen and (min-width: 992px) {
+  nav.row {
+    display: none;
+  }
+  .row {
+    flex-flow: row nowrap;
+  }
+  .vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+  .handwritten-text {
+    display: block;
+    position: absolute;
+  }
   #wrapper {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 55% 45%;
@@ -376,5 +429,95 @@ div#oyster img {
     max-width: 920px;
     min-height: 1179px;
     margin: 0 auto;
+  }
+  #wrapper .post-it {
+    position: absolute;
+  }
+  #wrapper #ocean {
+    padding: 2rem;
+  }
+  #wrapper #ocean div p {
+    background-color: rgba(255, 255, 255, 0.33);
+  }
+  div#oyster {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 40% 25% 35%;
+    grid-template-areas: "primary   primary    primary    primary    primary primary" "blank     img-center img-center img-center right   right" "img-aside text-center text-center text-center right   right";
+    padding: 4.25rem 1.5rem 0.75rem 4.75rem !important;
+  }
+  div#oyster > div {
+    padding: 0.25rem;
+    width: 100%;
+  }
+  div#oyster .post-it {
+    position: absolute;
+    margin-right: -5rem;
+    left: 1rem;
+    bottom: 1rem;
+    right: 2rem;
+  }
+  div#oyster #oyster-img-aside {
+    display: block;
+    grid-column: 1/span 2;
+    display: flex;
+    align-items: center;
+  }
+  div#oyster #oyster-img-aside img {
+    height: 70%;
+    width: 90%;
+    margin-left: -5rem;
+    margin-top: -1rem;
+  }
+  div#oyster #oyster-center-img .top-img {
+    width: calc(100% + 1.5rem);
+  }
+  div#oyster #oyster-center-text {
+    width: calc(100% - 0.5rem);
+  }
+  div#oyster #oyster-right img {
+    height: 50%;
+  }
+  #shrimp {
+    display: block;
+  }
+  #shrimp .img.focal {
+    grid-area: none;
+    height: 60%;
+  }
+  #shrimp .post-it {
+    grid-area: none;
+    position: absolute;
+    width: 30%;
+    bottom: 2rem;
+    left: 2rem;
+  }
+  #shrimp .row#shrimp-text {
+    grid-area: none;
+    flex-flow: row nowrap;
+    justify-content: end;
+    padding-top: 1rem;
+    margin: 0 -0.5rem 0;
+  }
+  #shrimp .row#shrimp-text > .row {
+    flex: 0 0 45%;
+    max-width: 45%;
+  }
+  #shrimp .row#shrimp-text p {
+    flex: 0 0 20%;
+    padding-bottom: 1rem !important;
+    padding: 0.5rem;
+  }
+  #shrimp .row#shrimp-text img {
+    max-width: 25%;
+    flex: 0 0 25%;
+    padding: 0.5rem;
+  }
+  #harpoon .row {
+    flex-flow: row nowrap;
+    padding: 0;
+  }
+  #harpoon .accent-oval {
+    position: absolute;
+    right: 1.5rem;
   }
 }/*# sourceMappingURL=main.css.map */
