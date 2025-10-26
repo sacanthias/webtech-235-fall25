@@ -573,12 +573,13 @@ div#collage{
 
             p{
                 flex: 1 0 0;
+                max-width: 50%;
                 padding-bottom: 1rem !important;
                 padding: 0.5rem
             }
 
             img{
-                max-width: 50%;
+                //max-width: 50%;
                 flex: 0 0 auto;
                 padding: 0.5rem
             }
@@ -621,6 +622,7 @@ div#collage{
         max-width: 920px;
         min-height: 1179px;
         margin:0 auto;
+        padding: 50px;
 
         .post-it{
             position: absolute;
