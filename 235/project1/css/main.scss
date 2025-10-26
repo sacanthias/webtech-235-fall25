@@ -18,10 +18,10 @@ $bg-main: #fff;
 $body-txt: semi-condensed 400 12px/1.1 'Noto Sans', sans-serif;
 $handwriting: 600 1rem 'Caveat', cursive;
 $accent-txt: 400 1rem 'Cabin Sketch', sans-serif;
-$green: #ADB753;
+$green: #818a30;
 
 body{
-    text-align: justify;
+    text-align: left;
     font: $body-txt;
     background-color: $bg-main;
 }
@@ -33,6 +33,48 @@ h1, h2, h3 {
 h1, h2, h3, h4, h5, h6, p{
     margin-bottom: 0.25rem;
     margin-top:0
+}
+
+a{
+    color:$green;
+    text-decoration: none;
+
+    &:hover{
+        color: darken($green, 20%);
+        text-decoration: underline;
+    }
+
+    &:visited{
+        color: darken($green, 20%);
+    }
+
+    &:active{
+        background: transparentize($green, 0.85);
+    }
+
+    &:focus{
+        outline: 1px $green solid
+    }
+}
+
+footer{
+    text-align: center;
+    padding: 0.5rem;
+    border-top:1px solid rgba(0,0,0,0.4);
+    margin-top:2reml
+}
+
+.responsive-header{
+    display: block;
+    text-align: center;
+    text-decoration: underline 1px $green;
+    padding-bottom:0.125rem;
+    margin: 1rem auto;
+}
+
+.container{
+    position: relative;
+    padding:0.5rem 0;
 }
 
 .img{
@@ -100,15 +142,6 @@ img{
     hr{
         margin: 0.5rem -1rem;
     }
-
-    // &::before{
-    //     content:'\f276';  
-    //     display: inline-block;
-    //     color: $green;
-    //     position: absolute;
-    //     background: #fff;
-    //     top: -0.3rem;
-    // }
 }
 
 .vertical-text{
@@ -117,6 +150,7 @@ img{
     margin: 0;
     padding: 0.25rem 0.125rem;
     background-color: $bg-main;
+    font-weight: 600;
 }
 
 .handwritten-text{
@@ -160,7 +194,7 @@ nav.row{
 }
 
 // top right section
-#ocean{
+#about{
     grid-area: tright;
     background:linear-gradient(180deg,rgb(255, 255, 255) 0%, rgba(225, 248, 252, 1) 5%, rgba(173, 183, 83, 1) 100%), url(../media/ocean-bg.jpg) center / cover;
     display: flex;
@@ -180,7 +214,7 @@ nav.row{
 
         }
 
-        header{
+        .row{
             display: flex;
             justify-content: center;
             align-items: center;
@@ -201,12 +235,13 @@ nav.row{
 }  
 
 // top left section
-div#oyster{
+div#collage{
     grid-area: tleft;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr 1fr 1fr;
     grid-template-areas: 
+        "header"
         "primary"
         "right"
         "text-center"
@@ -220,15 +255,15 @@ div#oyster{
         width: 100%;
     }
 
+    .responsive-header{
+        grid-area: header;
+    }
+
     #page-details{
-        position: absolute;
-        left: 1rem;
-        top: 1rem;
-        font-size: 0.8em;
-        text-transform: uppercase;
+        display: none;
     }
     
-    #oyster-primary-img{
+    #collage-primary-img{
         grid-area: primary;
 
         .img{
@@ -238,7 +273,7 @@ div#oyster{
         }
     }
 
-    #oyster-img-aside{
+    #collage-img-aside{
         grid-area: img-aside;
         display: flex;
         align-items: center;
@@ -247,18 +282,18 @@ div#oyster{
             z-index: 2;
             transform: rotate(15deg);
             top: 67%;
+            left:2rem;
         }
     }
 
-    #oyster-center-img{
+    #collage-center-img{
         grid-area: img-center;
         display: flex;
         flex-flow: column;
 
         .top-img{
             background: url(../media/etrian4.jpg);
-            width: calc(100% + 2rem);
-            margin-left: -2rem;
+            width:100%;
             height: 100%;
         }
 
@@ -267,7 +302,7 @@ div#oyster{
         }
     }
 
-    #oyster-center-text{
+    #collage-center-text{
         grid-area: text-center;
         display: flex;
         flex-direction: column;
@@ -292,7 +327,7 @@ div#oyster{
         }
     }
 
-    #oyster-right{
+    #collage-right{
         grid-area: right;
         display: flex;
         flex-flow: column;
@@ -304,14 +339,19 @@ div#oyster{
     }
     
     img{
+        min-height:200px;
         width:100%;
         height:100%;
         object-fit: cover;
     }
+
+    .img{
+        min-height: 200px;
+    }
 }
 
 // bottom left sidebar
-#clam{
+#spotlight{
     grid-area: blside;
     display: flex;
     flex-flow: column;
@@ -357,7 +397,7 @@ div#oyster{
 
     >div{
         flex:1 1 auto;
-        padding:1rem;
+        padding:2rem 1rem;
 
         h4, h3{
             text-align: center;
@@ -383,9 +423,6 @@ div#oyster{
 
             #transparent{
                 width: 70px;
-                left: -1rem;
-                position: absolute;
-                height: 70px;
                 z-index: 2
             }
 
@@ -398,15 +435,20 @@ div#oyster{
 }
 
 // bottom center section
-#shrimp{
+#review{
     grid-area: bcenter;
     position: relative;
     display: grid;
     grid-template-areas: 
+        "header"
         "focal"
         "post"
         "text"
         ;
+
+    #review-head{
+        grid-area: header;
+    }
 
     .img.focal{
         grid-area: focal;
@@ -417,9 +459,10 @@ div#oyster{
 
         .cut-in{
             background-color: $bg-main;
-            font-weight: 300;
+            font-weight: 600;
             margin-top: 0.5rem;
             padding:0.125rem;
+            font-size:1rem;
         }
     }
 
@@ -428,7 +471,7 @@ div#oyster{
         margin-top: 1rem;
     }
 
-    .row#shrimp-text{
+    .row#review-text{
         grid-area: text;
         //margin: 0.5rem -0.5rem 0 0.5rem;
         flex-direction: column-reverse;
@@ -447,12 +490,14 @@ div#oyster{
     }
 }
 
-#harpoon{
+#blog{
     grid-area: brside;
 
     .row{
         padding: 0 1rem 1rem;
         flex-flow: row-reverse nowrap;
+        align-items: center;
+        justify-content: center;
     }
 
     h2.vertical-text{
@@ -477,32 +522,54 @@ div#oyster{
 }
 
 @media (min-width: 650px){
-    div#oyster{
+    body{
+        font-size: 16px;
+    }
+
+    div#collage{
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 40% 20% 40%;
+        grid-template-rows: auto auto auto auto;
         grid-template-areas: 
+            "header    header"
             "primary   primary"
             "img-center right"
             "text-center right"
             ;
-        
-        #oyster-img-aside{
+
+        >div{
+            width: auto;
+        }
+
+        #collage-center-img .top-img {
+            width: 100%;
+            margin-left: 0;
+            height: 100%;
+        }
+
+        #collage-center-text{
+            p{
+                font-size:1em
+            }
+        }
+
+        #collage-img-aside{
             display: none;
         }
     }
 
-    #shrimp{
+    #review{
         display: grid;
         grid-template-columns: 35% 65%;
-        grid-template-rows: 55% 45%;
+        grid-template-rows: auto 1fr 1fr;
         grid-template-areas:
+            "header header"
             "focal focal"
             "post text";
 
-        .row#shrimp-text{
+        .row#review-text{
             grid-area: text;
             margin: 0.5rem -0.5rem 0 0.5rem;
-            flex-direction: column-reverse;
+            flex-direction: row;
 
             p{
                 flex: 1 0 0;
@@ -520,7 +587,14 @@ div#oyster{
 }
 
 @media screen and (min-width:992px){
+    body{
+        font-size: 12px;
+    }
     nav.row{
+        display: none;
+    }
+
+    .responsive-header{
         display: none;
     }
 
@@ -561,7 +635,7 @@ div#oyster{
         }
     }
 
-    div#oyster{
+    div#collage{
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
         grid-template-rows: 40% 25% 35%;
         grid-template-areas: 
@@ -570,6 +644,10 @@ div#oyster{
             "img-aside text-center text-center text-center right   right"
             ;
         padding: 4.25rem 1.5rem .75rem 4.75rem !important;
+
+        #page-details{
+            display: block;
+        }
 
         >div{
             padding: .25rem;
@@ -584,7 +662,7 @@ div#oyster{
             right: 2rem;
         }
 
-        #oyster-img-aside{
+        #collage-img-aside{
             display: block;
             grid-column: 1/span 2;
             display: flex;
@@ -598,22 +676,37 @@ div#oyster{
             }
         }
 
-        #oyster-center-img{
+        #collage-center-img{
             .top-img{
                 width: calc(100% + 1.5rem);
+                margin-left: -2rem;
             }
         }
 
-        #oyster-center-text{
+        #collage-center-text{
             width: calc(100% - 0.5rem);
         }
 
-        #oyster-right img {
+        #collage-right img {
             height: 50%;
+        }
+
+        img, .img{
+            min-height: auto;
         }
     }
 
-    #shrimp{
+    #spotlight{
+        .body .row{
+            #transparent{
+                left: -1rem;
+                position: absolute;
+                height: 70px;
+            }
+        }
+    }
+
+    #review{
         display: block;
 
         .img.focal{
@@ -629,12 +722,13 @@ div#oyster{
             left: 2rem;
         }
 
-        .row#shrimp-text{
-        grid-area: none;
-        flex-flow: row nowrap;
-        justify-content: end;
-        padding-top: 1rem;
-        margin:0 -0.5rem 0;
+        .row#review-text{
+            grid-area: none;
+            flex-flow: row nowrap;
+            justify-content: end;
+
+            padding-top: 1rem;
+            margin:0 -0.5rem 0;
 
             >.row{
                 flex: 0 0 45%;
@@ -655,10 +749,12 @@ div#oyster{
         }
     }
 
-    #harpoon{
+    #blog{
         .row{
             flex-flow: row nowrap;
-            padding:0
+            padding:0;
+            align-items:baseline;
+            justify-content: start;
         }
 
         .accent-oval{

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phase 1</title>
+    <title>Project 1 - </title>
     <link rel="stylesheet" href="css/main.css">
 
     <script src="https://kit.fontawesome.com/9d7a96bc19.js" crossorigin="anonymous"></script>
@@ -11,24 +11,30 @@
 
 <body>
     <nav class="row">
-        <a href="#ocean">one</a> |
-        <a href="#oyster">two</a> |
-        <a href="#clam">three</a> |
-        <a href="#shrimp">four</a> |
-        <a href="#harpoon">five</a>
+        <a href="#about-head">about</a> |
+        <a href="#collage-head">collage</a> |
+        <a href="#spotlight-head">spotlight</a> |
+        <a href="#review-head">review</a> |
+        <a href="#blog-head">blog</a>
     </nav>
+
+    <header class="responsive-header">
+        <h1 id="about-head">about</h1>
+    </header>
 
     <div id="wrapper">
         <!-- top right quarter -->
-        <div id="ocean">
+        <div id="about">
+        <!-- about section header -->
             <div>
-                <header>
+                <div class="row">
                     <div class="accent-oval">
                         <span class="underlined">01</span>
                     </div>
                     <h1>about the author</h1>
-                </header>
+                </div>
             
+                <!-- about content -->
                 <p>
                     shark (or nao) is a second year game design and development university student on the internet. here, i talk about games, albums, movies/tv, and books i've played, listened to, watched, and read to document my creative designing process and my inspirations. this page also serves as a directory to other places i'm active in. come talk to me!
                 </p>
@@ -36,13 +42,14 @@
         </div>
 
         <!-- top left quarter -->
-        <div id="oyster">
+        <div id="collage">
+            <h2 class="responsive-header" id="collage-head">game collage</h2>
             <p class="vertical-text" id="page-details">
                 &copy; 2025 nao belgrave -- <i class="far fa-star"></i>
             </p>
 
             <!-- main image -->
-            <div id="oyster-primary-img">
+            <div id="collage-primary-img">
                 <div class="img" alt="Final Fantasy X - Square Enix">
                     <!-- some flavor text -->
                     <p class="vertical-text">
@@ -52,17 +59,17 @@
             </div>
 
             <!-- the side image & accompanying text -->
-            <div id="oyster-img-aside">
-                <p class="handwritten-text">yummy!</p>
+            <div id="collage-img-aside">
+                <p class="handwritten-text">play these games!</p>
                 <img src="media/kh358.jpg" alt="Kingdom Heart 358/2 Days - Square Enix">
             </div>
 
             <!-- center pictures -->
-            <div id="oyster-center-img">
+            <div id="collage-center-img">
                 <img class="top-img" src="media/journey.png" alt="Journey - thatGameCompany">
             </div>
 
-            <div id="oyster-center-text">
+            <div id="collage-center-text">
                 <div class="img" alt="Etrian Odyssey IV: Legends of the Titan - Atlus">
                     <h2 class="vertical-text">
                         collage of favorite games
@@ -72,7 +79,7 @@
             </div>
 
             <!--  -->
-            <div id="oyster-right">
+            <div id="collage-right">
                 <img src="media/persona2ep.webp" alt="Persona 2: Eternal Punishment - Atlus">
 
                 <div class="post-it">
@@ -86,46 +93,50 @@
         </div>
 
         <!-- bottom left sidebar -->
-        <div id="clam"> 
-            <hr class="top">
-            <div class="body">
-                <h4>spotlight!</h4>
-                <h3 class="underlined">dorakuos</h3>
-                <p>
-                    <em>dorakuos</em> is the working title of a worldbuilding project i've been chipping away at for the past ~2 years. the continent contains six nations, seven distinct conlangs, and around fifteen ethnic groups, all with their own history.
-                </p>
+        <div id="spotlight"> 
+        <h2 class="responsive-header" id="spotlight-head">project spotlight</h2>
+            <div class="container">
+                <hr class="top">
+                <div class="body">
+                    <h4>spotlight!</h4>
+                    <h3 class="underlined">dorakuos</h3>
+                    <p>
+                        <em>dorakuos</em> is the working title of a worldbuilding project i've been chipping away at for the past ~2 years. the continent contains six nations, seven distinct conlangs, and around fifteen ethnic groups, all with their own history.
+                    </p>
 
-                <!-- <a href="#">read more <i class="fas fa-arrow-right"></i></a> -->
+                    <!-- <a href="#">read more <i class="fas fa-arrow-right"></i></a> -->
 
-                <img id="divider-img"
-                src="media/design.png" alt="character design draft">
+                    <img id="divider-img"
+                    src="media/design.png" alt="character design draft">
 
-                <div class="row">
-                    <p class="handwritten-text">what to write...</p>
-                    <img id="transparent" src="media/priyayati.png" alt="priyatik, one of the main characters.">
-                    <img src="media/conlang.png" alt="writing system drafts for my conlang, aladhi">
+                    <div class="row">
+                        <p class="handwritten-text">what to write...</p>
+                        <img id="transparent" src="media/priyayati.png" alt="priyatik, one of the main characters.">
+                        <img src="media/conlang.png" alt="writing system drafts for my conlang, aladhi">
+                    </div>
+
+                    <p>currently, i don't have serious plans to adapt this universe into other media (comics, novel, etc.) and it exists as a fun sandbox to play in.</p>
                 </div>
-
-                <p>currently, i don't have serious plans to adapt this universe into other media (comics, novel, etc.) and it exists as a fun sandbox to play in.</p>
+                <hr class="bottom">
             </div>
-            <hr class="bottom">
         </div>
 
         <!-- bottom center -->
-        <div id="shrimp">
+        <div id="review">
+        <h2 class="responsive-header" id="review-head">recent reads</h2>
             <div class="img focal">
-                <p class="cut-in">let's talk animanga! with genkaku picasso</p>
+                <h3 class="cut-in">let's talk animanga! with genkaku picasso</h3>
             </div>
 
             <div class="post-it">
                 <i class="fas fa-map-pin"></i>
-                <p class="header">world's first joyful furuya usamaru manga</p>
-                <p><em>genkaku picasso</em> is the third or fourth work i've read by furuya usamaru, who, rather infamously, also penned the eroguro classic <em>lychee light club</em>. his body of work is quite surrealist and i've become a fan.</p>
+                <h5 class="header">world's first joyful furuya usamaru manga</h5>
+                <p><em>genkaku picasso</em> is the third or fourth work i've read by furuya usamaru, who, rather infamously, also adapted the eroguro classic <em>lychee light club</em>. his body of work is quite surrealist and i've become a fan.</p>
                 <hr>
                 <p>still waiting for that <span class="accented">amane gymnasium</span> english licensing/scanlation... forever dropped at chapter nine.</p>
             </div>
 
-            <div class="row" id="shrimp-text">
+            <div class="row" id="review-text">
                 <p>
                     the short-lived series carried a lot of influence from furuya's morbid and surrealist indies' works, while still managing to end on a high note suitable for Jump magazine.
                 </p>
@@ -134,7 +145,8 @@
         </div>
 
         <!-- bottom right sidebar -->
-        <div id="harpoon">
+        <div id="blog">
+        <h2 class="responsive-header" id="blog-head"> blog excerpt </h2>
             <div class="row">
                 <h2 class="vertical-text">how in the world do i keep up with <span class="underlined">game jams?</span> <span class="accent-text">good question.</span></h2>
 
@@ -146,8 +158,13 @@
             <p>
                 <span class="float-right"><img class="float-in" src="media/pencil-clipart-lg.png" alt="ramen"></span>
                 i don't. i treat each jam like an extended design sprint and try to hold an hour-long brainstorming or designing session for myself each day the jam is active. most of the time, i don't end up submitting anything, and what i do have is often unfinished and subpar. this way, i'm training myself to design/develop under a deadline without the pressure of <em>needing</em> something finished by the end. this is also really great for portfolios!
+                <br>
+                <br>
+                <a href="#">read more <i class="fa-regular fa-arrow-right"></i></a>
             </p>
         </div>
     </div>
+
+    <footer id="credits"><a href="doc.html">View Credits</a> | <a href="spec.html">View Draft</a></footer>
 </body>
 </html>

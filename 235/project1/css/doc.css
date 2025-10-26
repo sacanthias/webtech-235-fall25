@@ -1,0 +1,21 @@
+:root{
+    --color-accent: #B17457;
+    --color-body: #4A4947;
+    --color-bg: #FAF7F0;
+}
+
+body{
+    padding:50px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color-body);
+    background-color: var(--color-bg);
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: Georgia, Cambria, Cochin, Times, 'Times New Roman', serif;
+    text-decoration: underline 2px var(--color-accent);
+}
+
+a{color: var(--color-accent)}
+a:visited{color: var(--color-body);}
+a:hover{color: var(--color-body);}

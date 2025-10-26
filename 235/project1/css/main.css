@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Caveat:wght@400..700&family=Noto+Sans:ital,wdth,wght@0,87.5,100..900;1,87.5,100..900&display=swap");
 @import url(normalize.css);
 body {
-  text-align: justify;
+  text-align: left;
   font: semi-condensed 400 12px/1.1 "Noto Sans", sans-serif;
   background-color: #fff;
 }
@@ -15,6 +15,44 @@ h1, h2, h3 {
 h1, h2, h3, h4, h5, h6, p {
   margin-bottom: 0.25rem;
   margin-top: 0;
+}
+
+a {
+  color: #818a30;
+  text-decoration: none;
+}
+a:hover {
+  color: rgb(58.2580645161, 62.3225806452, 21.6774193548);
+  text-decoration: underline;
+}
+a:visited {
+  color: rgb(58.2580645161, 62.3225806452, 21.6774193548);
+}
+a:active {
+  background: rgba(129, 138, 48, 0.15);
+}
+a:focus {
+  outline: 1px #818a30 solid;
+}
+
+footer {
+  text-align: center;
+  padding: 0.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
+  margin-top: 2reml;
+}
+
+.responsive-header {
+  display: block;
+  text-align: center;
+  text-decoration: underline 1px #818a30;
+  padding-bottom: 0.125rem;
+  margin: 1rem auto;
+}
+
+.container {
+  position: relative;
+  padding: 0.5rem 0;
 }
 
 .img {
@@ -32,22 +70,22 @@ img {
 }
 
 .underlined {
-  text-decoration: underline #ADB753 2px;
+  text-decoration: underline #818a30 2px;
 }
 
 .highlighted {
-  background-color: rgba(173, 183, 83, 0.3);
+  background-color: rgba(129, 138, 48, 0.3);
 }
 
 .accented {
-  color: #ADB753;
+  color: #818a30;
 }
 
 .accent-oval {
   border: 4px double;
   padding: 1.5rem 0.5rem !important;
   border-radius: 2rem;
-  color: #ADB753;
+  color: #818a30;
   font-weight: 800;
 }
 
@@ -68,7 +106,7 @@ img {
   position: absolute;
   top: -0.6rem;
   background: #fff;
-  color: #ADB753;
+  color: #818a30;
   font-size: 1.4em;
   padding-top: 0.125rem;
 }
@@ -87,6 +125,7 @@ img {
   margin: 0;
   padding: 0.25rem 0.125rem;
   background-color: #fff;
+  font-weight: 600;
 }
 
 .handwritten-text {
@@ -122,7 +161,7 @@ nav.row {
   padding: 1.5rem 1rem 1rem;
 }
 
-#ocean {
+#about {
   grid-area: tright;
   background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(225, 248, 252) 5%, rgb(173, 183, 83) 100%), url(../media/ocean-bg.jpg) center/cover;
   display: flex;
@@ -131,284 +170,310 @@ nav.row {
   padding: 2rem;
   background-blend-mode: darken;
 }
-#ocean div {
+#about div {
   position: relative;
   padding: 2rem;
 }
-#ocean div .popout {
+#about div .popout {
   position: absolute;
   right: -1rem;
   top: -1rem;
 }
-#ocean div header {
+#about div .row {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
 }
-#ocean div header h1 {
+#about div .row h1 {
   text-align: center;
   font-weight: 500;
   margin-left: 0.5rem;
 }
-#ocean div p {
+#about div p {
   background-color: rgba(255, 255, 255, 0.75);
   padding: 5px;
 }
 
-div#oyster {
+div#collage {
   grid-area: tleft;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  grid-template-areas: "primary" "right" "text-center" "img-aside" "img-center";
+  grid-template-rows: auto 1fr 1fr 1fr 1fr;
+  grid-template-areas: "header" "primary" "right" "text-center" "img-aside" "img-center";
   position: relative;
 }
-div#oyster > div {
+div#collage > div {
   padding: 0.25rem;
   width: 100%;
 }
-div#oyster #page-details {
-  position: absolute;
-  left: 1rem;
-  top: 1rem;
-  font-size: 0.8em;
-  text-transform: uppercase;
+div#collage .responsive-header {
+  grid-area: header;
 }
-div#oyster #oyster-primary-img {
+div#collage #page-details {
+  display: none;
+}
+div#collage #collage-primary-img {
   grid-area: primary;
 }
-div#oyster #oyster-primary-img .img {
+div#collage #collage-primary-img .img {
   height: 100%;
   background: url(../../game/images/ff10-tidus-render.png) center/cover;
   display: flex;
 }
-div#oyster #oyster-img-aside {
+div#collage #collage-img-aside {
   grid-area: img-aside;
   display: flex;
   align-items: center;
 }
-div#oyster #oyster-img-aside .handwritten-text {
+div#collage #collage-img-aside .handwritten-text {
   z-index: 2;
   transform: rotate(15deg);
   top: 67%;
+  left: 2rem;
 }
-div#oyster #oyster-center-img {
+div#collage #collage-center-img {
   grid-area: img-center;
   display: flex;
   flex-flow: column;
 }
-div#oyster #oyster-center-img .top-img {
+div#collage #collage-center-img .top-img {
   background: url(../media/etrian4.jpg);
-  width: calc(100% + 2rem);
-  margin-left: -2rem;
+  width: 100%;
   height: 100%;
 }
-div#oyster #oyster-center-img .img {
+div#collage #collage-center-img .img {
   height: 50%;
 }
-div#oyster #oyster-center-text {
+div#collage #collage-center-text {
   grid-area: text-center;
   display: flex;
   flex-direction: column;
 }
-div#oyster #oyster-center-text .img {
+div#collage #collage-center-text .img {
   align-items: end;
   justify-content: start;
   background: url(../media/etrian4.jpg) center/cover;
   margin-bottom: 0.25rem;
 }
-div#oyster #oyster-center-text .img h2 {
+div#collage #collage-center-text .img h2 {
   font-size: 0.9rem;
   margin-top: -2rem;
   font-weight: 300;
 }
-div#oyster #oyster-center-text p {
+div#collage #collage-center-text p {
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: -0.5px;
 }
-div#oyster #oyster-right {
+div#collage #collage-right {
   grid-area: right;
   display: flex;
   flex-flow: column;
   position: relative;
 }
-div#oyster #oyster-right img {
+div#collage #collage-right img {
   margin-bottom: 0.5rem;
 }
-div#oyster img {
+div#collage img {
+  min-height: 200px;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+div#collage .img {
+  min-height: 200px;
+}
 
-#clam {
+#spotlight {
   grid-area: blside;
   display: flex;
   flex-flow: column;
   position: relative;
 }
-#clam img {
+#spotlight img {
   width: 100%;
   height: 100%;
 }
-#clam .body .underlined {
+#spotlight .body .underlined {
   margin-bottom: 0.5rem;
 }
-#clam .body a {
+#spotlight .body a {
   display: block;
   text-align: right;
   position: relative;
   bottom: 0;
-  color: #ADB753;
+  color: #818a30;
 }
-#clam hr {
+#spotlight hr {
   border: 1px solid;
   height: 1rem;
   width: calc(100% - 2rem);
   position: absolute;
 }
-#clam hr.top {
+#spotlight hr.top {
   border-width: 1px 1px 0 1px;
   border-radius: 0.5rem 0.5rem 0 0;
   top: 0.5rem;
 }
-#clam hr.bottom {
+#spotlight hr.bottom {
   border-width: 0 1px 1px 1px;
   border-radius: 0 0 0.5rem 0.5rem;
   bottom: 0.5rem;
 }
-#clam > div {
+#spotlight > div {
   flex: 1 1 auto;
-  padding: 1rem;
+  padding: 2rem 1rem;
 }
-#clam > div h4, #clam > div h3 {
+#spotlight > div h4, #spotlight > div h3 {
   text-align: center;
 }
-#clam > div #divider-img {
+#spotlight > div #divider-img {
   height: 100px;
   margin: 0.5rem 0;
   width: 90%;
 }
-#clam > div .row {
+#spotlight > div .row {
   align-items: end;
   justify-content: end;
   position: relative;
   margin-bottom: 0.5rem;
 }
-#clam > div .row .handwritten-text {
+#spotlight > div .row .handwritten-text {
   left: -2rem;
   top: 0;
   transform: rotate(-15deg);
 }
-#clam > div .row #transparent {
+#spotlight > div .row #transparent {
   width: 70px;
-  left: -1rem;
-  position: absolute;
-  height: 70px;
   z-index: 2;
 }
-#clam > div .row img:not(#transparent) {
+#spotlight > div .row img:not(#transparent) {
   height: 90px;
   width: 70%;
 }
 
-#shrimp {
+#review {
   grid-area: bcenter;
   position: relative;
   display: grid;
-  grid-template-areas: "focal" "post" "text";
+  grid-template-areas: "header" "focal" "post" "text";
 }
-#shrimp .img.focal {
+#review #review-head {
+  grid-area: header;
+}
+#review .img.focal {
   grid-area: focal;
   min-height: 200px;
   width: 100%;
   background: url(../media/genkaku.jpg) center/cover;
   justify-content: start;
 }
-#shrimp .img.focal .cut-in {
+#review .img.focal .cut-in {
   background-color: #fff;
-  font-weight: 300;
+  font-weight: 600;
   margin-top: 0.5rem;
   padding: 0.125rem;
+  font-size: 1rem;
 }
-#shrimp .post-it {
+#review .post-it {
   grid-area: post;
   margin-top: 1rem;
 }
-#shrimp .row#shrimp-text {
+#review .row#review-text {
   grid-area: text;
   flex-direction: column-reverse;
 }
-#shrimp .row#shrimp-text p {
+#review .row#review-text p {
   flex: 1 0 0;
   padding-bottom: 1rem !important;
   padding: 1rem 0;
 }
-#shrimp .row#shrimp-text img {
+#review .row#review-text img {
   max-width: 100%;
   flex: 0 0 auto;
   padding: 1rem 0;
 }
 
-#harpoon {
+#blog {
   grid-area: brside;
 }
-#harpoon .row {
+#blog .row {
   padding: 0 1rem 1rem;
   flex-flow: row-reverse nowrap;
+  align-items: center;
+  justify-content: center;
 }
-#harpoon h2.vertical-text {
+#blog h2.vertical-text {
   max-height: 35%;
   text-align: left;
 }
-#harpoon .accent-oval {
+#blog .accent-oval {
   position: relative;
 }
-#harpoon span.float-right {
+#blog span.float-right {
   float: right;
   margin-top: -1rem;
   margin-left: 1rem;
 }
-#harpoon span.float-right img {
+#blog span.float-right img {
   height: 70px;
   width: 70px;
 }
 
 @media (min-width: 650px) {
-  div#oyster {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 40% 20% 40%;
-    grid-template-areas: "primary   primary" "img-center right" "text-center right";
+  body {
+    font-size: 16px;
   }
-  div#oyster #oyster-img-aside {
+  div#collage {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas: "header    header" "primary   primary" "img-center right" "text-center right";
+  }
+  div#collage > div {
+    width: auto;
+  }
+  div#collage #collage-center-img .top-img {
+    width: 100%;
+    margin-left: 0;
+    height: 100%;
+  }
+  div#collage #collage-center-text p {
+    font-size: 1em;
+  }
+  div#collage #collage-img-aside {
     display: none;
   }
-  #shrimp {
+  #review {
     display: grid;
     grid-template-columns: 35% 65%;
-    grid-template-rows: 55% 45%;
-    grid-template-areas: "focal focal" "post text";
+    grid-template-rows: auto 1fr 1fr;
+    grid-template-areas: "header header" "focal focal" "post text";
   }
-  #shrimp .row#shrimp-text {
+  #review .row#review-text {
     grid-area: text;
     margin: 0.5rem -0.5rem 0 0.5rem;
-    flex-direction: column-reverse;
+    flex-direction: row;
   }
-  #shrimp .row#shrimp-text p {
+  #review .row#review-text p {
     flex: 1 0 0;
     padding-bottom: 1rem !important;
     padding: 0.5rem;
   }
-  #shrimp .row#shrimp-text img {
+  #review .row#review-text img {
     max-width: 50%;
     flex: 0 0 auto;
     padding: 0.5rem;
   }
 }
 @media screen and (min-width: 992px) {
+  body {
+    font-size: 12px;
+  }
   nav.row {
+    display: none;
+  }
+  .responsive-header {
     display: none;
   }
   .row {
@@ -439,84 +504,98 @@ div#oyster img {
   #wrapper #ocean div p {
     background-color: rgba(255, 255, 255, 0.33);
   }
-  div#oyster {
+  div#collage {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 40% 25% 35%;
     grid-template-areas: "primary   primary    primary    primary    primary primary" "blank     img-center img-center img-center right   right" "img-aside text-center text-center text-center right   right";
     padding: 4.25rem 1.5rem 0.75rem 4.75rem !important;
   }
-  div#oyster > div {
+  div#collage #page-details {
+    display: block;
+  }
+  div#collage > div {
     padding: 0.25rem;
     width: 100%;
   }
-  div#oyster .post-it {
+  div#collage .post-it {
     position: absolute;
     margin-right: -5rem;
     left: 1rem;
     bottom: 1rem;
     right: 2rem;
   }
-  div#oyster #oyster-img-aside {
+  div#collage #collage-img-aside {
     display: block;
     grid-column: 1/span 2;
     display: flex;
     align-items: center;
   }
-  div#oyster #oyster-img-aside img {
+  div#collage #collage-img-aside img {
     height: 70%;
     width: 90%;
     margin-left: -5rem;
     margin-top: -1rem;
   }
-  div#oyster #oyster-center-img .top-img {
+  div#collage #collage-center-img .top-img {
     width: calc(100% + 1.5rem);
+    margin-left: -2rem;
   }
-  div#oyster #oyster-center-text {
+  div#collage #collage-center-text {
     width: calc(100% - 0.5rem);
   }
-  div#oyster #oyster-right img {
+  div#collage #collage-right img {
     height: 50%;
   }
-  #shrimp {
+  div#collage img, div#collage .img {
+    min-height: auto;
+  }
+  #spotlight .body .row #transparent {
+    left: -1rem;
+    position: absolute;
+    height: 70px;
+  }
+  #review {
     display: block;
   }
-  #shrimp .img.focal {
+  #review .img.focal {
     grid-area: none;
     height: 60%;
   }
-  #shrimp .post-it {
+  #review .post-it {
     grid-area: none;
     position: absolute;
     width: 30%;
     bottom: 2rem;
     left: 2rem;
   }
-  #shrimp .row#shrimp-text {
+  #review .row#review-text {
     grid-area: none;
     flex-flow: row nowrap;
     justify-content: end;
     padding-top: 1rem;
     margin: 0 -0.5rem 0;
   }
-  #shrimp .row#shrimp-text > .row {
+  #review .row#review-text > .row {
     flex: 0 0 45%;
     max-width: 45%;
   }
-  #shrimp .row#shrimp-text p {
+  #review .row#review-text p {
     flex: 0 0 20%;
     padding-bottom: 1rem !important;
     padding: 0.5rem;
   }
-  #shrimp .row#shrimp-text img {
+  #review .row#review-text img {
     max-width: 25%;
     flex: 0 0 25%;
     padding: 0.5rem;
   }
-  #harpoon .row {
+  #blog .row {
     flex-flow: row nowrap;
     padding: 0;
+    align-items: baseline;
+    justify-content: start;
   }
-  #harpoon .accent-oval {
+  #blog .accent-oval {
     position: absolute;
     right: 1.5rem;
   }
