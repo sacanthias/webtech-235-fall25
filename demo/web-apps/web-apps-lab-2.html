@@ -34,13 +34,41 @@
     body.style.color = "#800000"
 
     let pList = document.querySelectorAll("p")
-    let ufoSightings = pList[1];
+    let ufoSightings = pList[0];
+    
+    // creating link
+    let link = document.createElement("a");
+    link.innerHTML = "http://www.nuforc.org/";
+    link.href = "http://www.nuforc.org/";
+
+    // styling & modifications to the first <p> element
     ufoSightings.innerHTML = "Report your UFO Sightings Here: ";
+    ufoSightings.appendChild(link);
+      
     ufoSightings.style.color = "green";
     ufoSightings.style.fontWeight = "bold";
     ufoSightings.style.fontSize = "2em";
     ufoSightings.style.textTransform ="uppercase";
-    ufoSightings.style.textShadow = "3px 2px #A44"
+    ufoSightings.style.textShadow = "3px 2px #A44";
+   
+    // second <p>
+    pList[1].innerHTML = "";
+
+    // styling & modifications to the third <p> element
+    let img = document.createElement("img");
+    img.src = "https://media.newyorker.com/photos/64ca89f569af7f8649142d29/3:4/w_718,h_957,c_limit/Wiley-UFO-03.jpg"
+    img.style.width = "50%";
+    img.style.height = "50%";
+    
+    pList[2].innerHTML = "";
+    pList[2].appendChild(img);
+
+    // footer changes
+    const d = new Date();
+    let footer = document.querySelector("footer");
+    let date = document.querySelector("footer b");
+    footer.innerHTML = "&copy; Nao Belgrave";
+    date.innerHTML = d.getFullYear().toString();
 
 	</script>
 </body>
