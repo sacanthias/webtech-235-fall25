@@ -87,7 +87,18 @@
 	span. In JavaScript we access these custom data properties using the .dataset 
 	property. We also covered this in web-apps-6.
 	*/
-	 
+	 let imageSelect = document.querySelectorAll("li span");
+	 let image = document.querySelector("#placeholder");
+
+	 for(let i of imageSelect){
+		i.onclick = function(e){
+			// console.log(e.target.dataset.image);
+			// console.log(image.src)
+			//image.src = i.data-image;
+
+			image.src = "images/" + e.target.dataset.image;
+		}
+	 }
     </script>  
 </body>
 </html>
