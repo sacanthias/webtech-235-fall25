@@ -3,9 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Words of Wisdom</title>
+    <title>HW - Random Phrases</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+            padding: 50px 100px;
+            background-color: bisque;
+            text-align: center;
+            font-family: "Montserrat Alternates", sans-serif;
+        }
+
+        header{
+            font-family: "Fredericka the Great", serif;
+        }
+
+        #wrapper{
+            padding:20px;
+        }
+
+        #img-bg{
+            background-image: url("https://i.pinimg.com/1200x/ed/52/b4/ed52b43f0dd5c2cd75aa12af81344299.jpg");
+            background-position: center;
+            background-size: cover;
+
+            padding: 30px;
+            margin: auto;
+            width: 50vw;
+            height: 50vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #img-bg p{
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.85);
+            color: black;
+            margin: auto;
+            font-weight:600;
+            font-size:1.2rem;
+        }
+
+        #randomize{
+            margin:10px;
+            font-family: "Montserrat Alternates", sans-serif;
+            background-color: darkcyan;
+            color: white;
+            padding: 10px;
+            font-size: 1.2rem;
+            border-radius: .5rem;
+        }
+
+    </style>
 </head>
 <body>
-    
+    <header>
+        <h1>Words of Wisdom from Delivery God Yato!</h1>
+    </header>
+
+    <div id="wrapper">
+        <div id="img-bg">
+            <p>#</p>
+        </div>
+        <button type="button" id="randomize">Receive Blessings</button>
+    </div>
+
+    <footer>
+        &copy; Nao Belgrave
+    </footer>
+
+    <script>
+        "use strict";
+        // image array
+        let images = [
+            "https://i.pinimg.com/736x/9b/aa/22/9baa22d6cbe3ab1120fcaaad7b27c356.jpg",
+            "https://i.pinimg.com/1200x/a1/71/e5/a171e5d6f7b586e8514b010fcb5f29cc.jpg",
+            "https://i.pinimg.com/736x/6d/ed/1b/6ded1ba21ec6f9d8ce036c6c370bdb89.jpg",
+            "https://i.pinimg.com/736x/76/4a/33/764a337e56b16e53b56f556219394943.jpg"
+        ]
+
+        // phrase array
+        let phrases = [
+            "Gods don't poop.",
+            "Even if things are painful and tough, people should appreciate what it means to be alive at all!",
+            "There's no such thing as a free wish!",
+            "Life and death are like light and shadow. They're both always there.",
+            "Man, kids these days. They think it’s a competition to have the most friends. One is enough. Just find that one, irreplaceable someone.",
+            "They say that 'god is always watching'. But people are watching way more closely.",
+            "My cellphone number only appears to those who are troubled.",
+            "Blessings and curses work the same way. If you think about them enough, they turn into something real."
+        ]
+
+        let p = document.querySelector("#img-bg p");
+        let bg = document.querySelector("#img-bg");
+        
+        window.onload = init;
+
+        // randomly selecting an item from an array
+        function takeRand(array){
+            console.log(Math.floor(Math.random()* array.length))
+            console.log(array.length);
+            return array[Math.floor(Math.random()* array.length)];
+        }
+
+        // loads random image + quote on page load
+        function init(){
+
+            p.innerHTML = takeRand(phrases);
+            bg.style.backgroundImage = "url(" + takeRand(images) + ")";
+        }
+
+        // loads random quote on button click
+        let randomize = document.querySelector("#randomize");
+        randomize.onclick = function(e){
+            p.innerHTML = takeRand(phrases);
+        };
+
+    </script>
 </body>
 </html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Apps Tutorial 7 Exercise</title>
+    <style>
+        li {
+            text-transform: capitalize;
+        }
+    </style>
+    <script>
+        "use strict"
+
+        let monsters = [];      // our array of monsters
+
+        /**
+         * Our onload Event.
+         * 
+         */
+        window.onload = function () {
+            makeSampleMonsters();
+            showMonsters("Goomba","#goombas");
+            showMonsters("Boo", "#boos");
+        }
+
+        /**
+         * Create a set of Sample Monsters.
+         * 
+         */
+        function makeSampleMonsters() {
+            let monster;
+
+            // continuously setting the monster variable to a goomba constructor return (returns the monster object), then adding that to an array of monsters (monsters[]).
+            // constructor values are name, hp, speed, and score
+            monster = makeGoomba("John", 20, 30, 100);
+            monsters.push(monster);
+            monster = makeGoomba("Fred", 30, 100, 150);
+            monsters.push(monster);
+            monster = makeGoomba("Alice", 40, 150, 200);
+            monsters.push(monster);
+
+            // the monsters array should contain goombas named John, Fred, and Alice.
+
+            monster = makeBoos("Greg", 25, 50, 175);
+            monsters.push(monster);
+            monster = makeBoos("Mary", 50, 20, 100);
+            monsters.push(monster);
+
+            // the monsters array should contain boos named Greg and Mary.
+        }
+
+        /**
+         * Function that shows our monsters (just Goombas for now)
+         * 
+         */
+        function showMonsters(monType, listID) {
+            let monstersList = document.querySelector(listID);
+            let sortedMonsters = monsters.filter((obj) => obj.type == monType);
+
+            // iterates through the monsters array and "prints" them as li elements in a list.
+            for (let i = 0; i < sortedMonsters.length; i++) {
+                let liStr = "";
+                let li = document.createElement("li");
+
+                for (let key in sortedMonsters[i]) {
+                    if (typeof sortedMonsters[i][key] !== "function") {
+                        liStr += `<b>${key}:</b> ${sortedMonsters[i][key]}<br />`;
+                    }
+                }
+                li.innerHTML = liStr;
+                monstersList.appendChild(li);
+            }
+        }
+
+        /**
+         * create our base monster object with defaults.
+         * 
+         */
+        function createBaseMonster() {
+            return {
+                name: "",
+                hp: 100,
+                speed: 10,
+                score: 100,
+                type: "",
+                status: function () {
+                    console.log("name: " + this.name + ", hp: " + this.hp + ", speed: " + this.speed + ", score: " + this.score);
+                }
+            }
+        }
+
+        /**
+         * Create a Goomba.
+         * 
+         */
+        function makeGoomba(name, hp, speed, score) {
+            let goomba = createBaseMonster();
+            goomba.name = name;
+            goomba.hp = hp;
+            goomba.speed = speed;
+            goomba.score = score;
+            goomba.type = "Goomba";
+            goomba.takeDamage = function (dmgVal) {
+                goomba.hp -= dmgVal;
+            }
+            goomba.powerUp = powerUp;
+
+            Object.seal(goomba);
+            return goomba;
+        }
+
+        function makeBoos(name, hp, speed, score) {
+            let boo = createBaseMonster();
+            boo.name = name;
+            boo.hp = hp;
+            boo.speed = speed;
+            boo.score = score;
+            boo.type = "Boo";
+            boo.takeDamage = function (dmgVal) {
+                boo.hp -= dmgVal;
+            }
+            boo.powerUp = powerUp;
+
+            Object.seal(boo);
+            return boo;
+        }
+
+        /**
+         * Function that can be used inside a monster object.
+         * 
+         */
+        function powerUp(val) {
+            this.speed += val;
+            this.hp += val
+            this.status();
+        };
+
+    </script>
+</head>
+
+<body>
+    <div id="lineUp">
+        <h1>Goombas</h1>
+        <ul id="goombas">
+        </ul>
+
+        <h1>Boos</h1>
+        <ul id="boos">
+        </ul>
+    </div>
+</body>
+
+</html>
