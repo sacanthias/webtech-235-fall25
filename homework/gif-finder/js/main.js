@@ -1,5 +1,8 @@
+let spinner;
+
 // 1
-window.onload = (e) => {document.querySelector("#search").onclick = searchButtonClicked};
+window.onload = (e) => {
+    document.querySelector("#search").onclick = searchButtonClicked;};
 
 // 2
 let displayTerm = "";
@@ -9,6 +12,7 @@ let gifs = [];
 // 3
 function searchButtonClicked(){
     console.log("searchButtonClicked() called");
+
     // url is the giphy search endpoint
     const GIPHY_URL = "https://api.giphy.com/v1/gifs/search?";
 
@@ -70,7 +74,8 @@ function dataLoaded(e){
 
     let results = obj.data;
     console.log("results lenght = " + results.length);
-    let bigString = "Here are " + results.length + "results for " + displayTerm;
+    let resultsString = "<p>Here are " + results.length + " results for '" + displayTerm + "'.</p>";
+    let bigString = "";
     
     for (let i = 0; i < results.length; i++){
         let result = results[i];
@@ -86,6 +91,8 @@ function dataLoaded(e){
 
         bigString += line;
     }
+
+    document.querySelector("#resultsDisplay p").innerHTML = resultsString;
 
     document.querySelector("#content").innerHTML = bigString;
 
