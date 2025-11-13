@@ -73,6 +73,25 @@ function searchClicked(){
         }
         searchURL += "&sfw";
     }
+    else{
+        if(anime){
+            searchURL += "/anime";
+            searchURL += "?q=" + term;
+            
+            // automatically orders by score/user rating
+            searchURL += "&anime_search_query_orderby=score"
+        }
+        else if(manga){
+            searchURL += "/manga";
+            searchURL += "?q=" + term;
+            searchURL += "&manga_search_query_orderby=score";
+            // automatically orders by score/user rating
+        }
+        else{
+            document.querySelector("#resultText").innerHTML = "Please select a medium to sort by!";
+            return;
+        }
+    }
 
     
     searchURL += "&limit=" + limit;
@@ -105,7 +124,7 @@ function dataLoaded(){
     console.log(obj.data);
 
     if(!obj.data || obj.data.length == 0){
-        document.querySelector("#status").innerHTML = "<b>No results found for '" + displayTerm + "'</b>";
+        //document.querySelector("#status").innerHTML = "<b>No results found for '" + displayTerm + "'</b>";
         console.log("no results found.");
         return; //bail out
     }
