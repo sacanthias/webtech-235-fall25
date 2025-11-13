@@ -1,0 +1,29 @@
+body{
+    padding:50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#searchResults{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.search-results{
+    margin-left: 1em;
+    margin-bottom: 1em;
+    padding:1em;
+    text-align: center;
+}
+
+.search-results img{
+    width: 100%;
+}
+
+.search-results span, .search-results button{
+    display: block;
+    margin: 0.25em auto;
+}
+
+.search-results a{
+    font-size:1.2em
+}
