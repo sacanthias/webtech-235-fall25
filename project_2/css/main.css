@@ -8,22 +8,22 @@ body{
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-.search-results{
+.results{
     margin-left: 1em;
     margin-bottom: 1em;
     padding:1em;
     text-align: center;
 }
 
-.search-results img{
+.results img{
     width: 100%;
 }
 
-.search-results span, .search-results button{
+.results span, .results button{
     display: block;
     margin: 0.25em auto;
 }
 
-.search-results a{
+.results a{
     font-size:1.2em
 }

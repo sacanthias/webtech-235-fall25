@@ -3,7 +3,7 @@ let sfw;
 let limit;
 let anime;
 let manga;
-let aniList;
+let userList;
 let saveButtons;
 
 window.onload = (e) => {
@@ -12,20 +12,82 @@ window.onload = (e) => {
 };
 
 function populateHome(){
-    // let topAnimeURL = apiPath + "/top/anime";
-    // console.log(topAnimeURL);
+    let topAnimeURL = apiPath + "/top/anime";
+    console.log(topAnimeURL);
 
-    // getData(topAnimeURL);
+    getData(topAnimeURL);
     // await 300; dataDisplay("#top_anime", "top-anime");
 }
 
+function getData(url){
+    // 1 - create a new XHR object
+    let xhr = new XMLHttpRequest();
+
+    // 2 - setting the *onload* handler
+    xhr.onload = homeLoaded;
+
+    // 3 - setting the *onerror* handler
+    xhr.onerror = dataError;
+
+    // 4 - open connection & send request
+    xhr.open("GET", url);
+    xhr.send();
+}
+
+function homeLoaded(id, classN){
+    let xhr = this;
+    console.log(xhr.responseText);
+
+    let obj = JSON.parse(xhr.responseText);
+    console.log(obj.data);
+
+    if(!obj.data || obj.data.length == 0){
+        //document.querySelector("#status").innerHTML = "<b>No results found for '" + displayTerm + "'</b>";
+        console.log("no results found.");
+        return; //bail out
+    }
+
+    let searchResult = obj.data;
+    let bigString = "";
+
+        for (let result of searchResult){
+
+            let image = result.images.jpg.image_url;
+            if(!image) image = "images/no-image-found.png";
+
+            let url = result.url;
+            let rating = result.rating;
+            if(!rating) rating = "Unrated";
+            let title = result.title;
+
+            let line = `<div class='${classN}'><img src='${image}' title='${result.title}' />`;
+            line += `<span>
+            <a target ='_blank' href='${url}'>${title}</a>
+            <br>Rating: ${rating}
+            <button type='button' class='save'>Save</button>
+            </span></div>`;
+
+            bigString += line;
+        }
+
+        document.querySelector(id).innerHTML = bigString;
+}
+
+function dataLoaded(){
+    let xhr = this;
+    console.log(xhr.responseText);
+    let obj = JSON.parse(xhr.responseText);
+    return Promise.resolve(obj.data);
+}
 
 async function dataDisplay(containerID, classN){
+    console.log("calling");
+    let callResult = await dataLoaded();
+    console.log("received data");
     if(callResult){
         let bigString = "";
 
-        for (let i = 0; i < callResult.length; i++){
-            let result = callResult[i];
+        for (let result of callResult){
 
             let image = result.images.jpg.image_url;
             if(!image) image = "images/no-image-found.png";
@@ -43,6 +105,7 @@ async function dataDisplay(containerID, classN){
     }
 }
 
+// searchClicked is to *specifically* handle searching 
 function searchClicked(){
     console.log("search button was clicked!");
     let searchURL = apiPath;
@@ -84,8 +147,8 @@ function searchClicked(){
         else if(manga){
             searchURL += "/manga";
             searchURL += "?q=" + term;
-            searchURL += "&manga_search_query_orderby=score";
             // automatically orders by score/user rating
+            searchURL += "&manga_search_query_orderby=score";
         }
         else{
             document.querySelector("#resultText").innerHTML = "Please select a medium to sort by!";
@@ -97,10 +160,12 @@ function searchClicked(){
     searchURL += "&limit=" + limit;
     
     console.log(searchURL);
-    getData(searchURL);
+    getSearch(searchURL);
+    dataDisplay("searchResults", "results")
 }
 
-function getData(url){
+// xml request code stuff *specifically* for handling user-inputted search
+function getSearch(url){
     // 1 - create a new XHR object
     let xhr = new XMLHttpRequest();
 
@@ -115,7 +180,7 @@ function getData(url){
     xhr.send();
 }
 
-function dataLoaded(){
+function searchLoaded(){
     let xhr = this;
 
     console.log(xhr.responseText);
@@ -132,8 +197,7 @@ function dataLoaded(){
     let searchResult = obj.data;
     let bigString = "";
 
-        for (let i = 0; i < searchResult.length; i++){
-            let result = searchResult[i];
+        for (let result of searchResult){
 
             let image = result.images.jpg.image_url;
             if(!image) image = "images/no-image-found.png";
@@ -143,7 +207,7 @@ function dataLoaded(){
             if(!rating) rating = "Unrated";
             let title = result.title;
 
-            let line = `<div class='search-results'><img src='${image}' title='${result.title}' />`;
+            let line = `<div class='results'><img src='${image}' title='${result.title}' />`;
             line += `<span>
             <a target ='_blank' href='${url}'>${title}</a>
             <br>Rating: ${rating}
@@ -163,6 +227,6 @@ function dataError(e){
 saveButtons = document.querySelectorAll("button.save");
 for(let b of saveButtons){
     b.onchange = function(e){
-            
-       }
+        
+    }
 }
