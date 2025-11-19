@@ -15,8 +15,7 @@ function populateHome(){
     let topAnimeURL = apiPath + "/top/anime";
     console.log(topAnimeURL);
 
-    getData(topAnimeURL);
-    // await 300; dataDisplay("#top_anime", "top-anime");
+    //getData(topAnimeURL);
 }
 
 function getData(url){
@@ -73,10 +72,24 @@ function homeLoaded(id, classN){
         document.querySelector(id).innerHTML = bigString;
 }
 
-function dataLoaded(){
+async function dataLoaded(){
+    console.log("data has loaded")
     let xhr = this;
     console.log(xhr.responseText);
+
+    if(!xhr.responseText){
+        console.log("response text was undefined");
+        return Promise.reject(new Error("rejected!"));;
+    }
+
     let obj = JSON.parse(xhr.responseText);
+
+    if(!obj.data || obj.data.length == 0){
+        //document.querySelector("#status").innerHTML = "<b>No results found for '" + displayTerm + "'</b>";
+        console.log("no results found.");
+        return; //bail out
+    }
+
     return Promise.resolve(obj.data);
 }
 
@@ -84,6 +97,8 @@ async function dataDisplay(containerID, classN){
     console.log("calling");
     let callResult = await dataLoaded();
     console.log("received data");
+    console.log("call result:" + callResult);
+
     if(callResult){
         let bigString = "";
 
