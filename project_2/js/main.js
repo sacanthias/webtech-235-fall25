@@ -137,20 +137,21 @@ function getSearch(url){
     
     // 4 - open connection & send request
     xhr.open("GET", url, true);
+    console.log("request opened");
+    xhr.send();
 
     // code snatched from mozilla docs dattebayo
     if (xhr.readyState === XMLHttpRequest.DONE) {
         const status = xhr.status;
+        console.log("xhr status: " + xhr.status);
         if (status === 0 || (status >= 200 && status < 400)) {
-        // The request has been completed successfully
-        console.log(xhr.responseText);
-        dataLoaded;
+            // The request has been completed successfully
+            console.log(xhr.responseText);
+            dataLoaded;
         } else {
         // Oh no! There has been an error with the request!
         }
     }
-
-    xhr.send();
 }
 
 function dataError(e){
