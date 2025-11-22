@@ -1,29 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Fugaz+One&family=Tsukimi+Rounded&display=swap');
+
 body{
-    padding:50px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #FFF2EF;
+    color:#5D688A;
+    padding: 50px;
+    font-family: 'Tsukimi Rounded', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
 }
 
-#searchResults{
+header{
+    background: url(../images/header-bg.jpg) center / cover;
+    margin: -50px -50px 50px;
+    padding: 10px;
+}
+
+header h1{
+    font-family: 'Bagel Fat One', cursive;
+    padding: 75px;
+    text-align: center;
+    background: #FFF2EF;
+    background: radial-gradient(circle,rgba(255, 242, 239, 0.75) 50%, rgba(0, 0, 0, 0) 100%);
+    font-size: 4rem;
+}
+
+h2{
+    font-family: 'Fugaz One', sans-serif;
+    font-size: 2.5rem;
+    text-decoration: 4px underline #F7A5A5;
+}
+
+#widgetHolder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#widgetHolder > div{
+    padding: 10px  20px
+}
+
+#widgetHolder button{
+    /* From Uiverse.io by absoluteSTrange */
+    padding: 17px 30px;
+    border-radius: 10px;
+    border: 0;
+    background-color: #F7A5A5;
+    letter-spacing: 1.5px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    box-shadow: #B95E82 0px 10px 0px 0px;
+    color: #672f45;
+    cursor: pointer;
+    font-family: 'Bagel Fat One', cursive;
+}
+
+#widgetHolder button:hover {
+    box-shadow: #B95E82 0px 7px 0px 0px;
+}
+
+#widgetHolder button:active {
+    background-color: #F7A5A5;
+    /*50, 168, 80*/
+    box-shadow: #B95E82 0px 0px 0px 0px;
+    transform: translateY(5px);
+    transition: 200ms;
+}
+
+#content .load-home{
+    margin-bottom: 40px;
+}
+
+#content .load-home > div, #searchGrid{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(7, 1fr);
+}
+
+#content .load-home > div > div, #searchGrid > div{
+    padding:0 20px 0 0;
+    text-align: center;
+}
+
+#content > div:not(#widgetHolder) > div img, #searchGrid > div img{
+    width:100%;
+    border-radius: 0.5em;
+    box-shadow: #FFC29B 5px 5px;
+    transition: box-shadow 0.3s ease;
+}
+
+#content > div:not(#widgetHolder) > div img:hover, #searchGrid > div img:hover{
+    box-shadow: 10px 10px
 }
 
 .results{
     margin-left: 1em;
     margin-bottom: 1em;
     padding:1em;
-    text-align: center;
 }
 
 .results img{
     width: 100%;
+    margin-bottom: 0.5rem;
 }
 
-.results span, .results button{
+.load-home span, .load-home button{
     display: block;
     margin: 0.25em auto;
 }
 
-.results a{
-    font-size:1.2em
-}
+a{color:#B95E82; text-decoration: none; transition: color 0.3s ease-in;}
+a:hover{color:#5D688A}
+a:visited{color: #672f45;}
+a:focus{text-decoration: dotted; color:#5D688A}
+a:focus{background-color: #FFC29B; padding:2px; outline:2px dotted #B95E82}

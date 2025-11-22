@@ -15,34 +15,62 @@
     
     <div id="content">
         <div id="widgetHolder">
-            <div class="widget"><input id="searchterm" type="text" size="20" maxlength="20" autofocus value="haikyuu" /></div>
+            <div>
+                <div class="widget"><input id="searchterm" type="text" size="20" maxlength="20" autofocus value="haikyuu" /></div>
 
-            <div class="widget">
-                Show Results by
-                <select id="limit">
-                    <option value="5">5</option>
-                    <option value="10" selected>10</option>
-                    <option value="15">15</option>
-                    <option value="20">20</option>
-                    <option value="25">25</option>
-                </select>
+                <div class="widget">
+                    Display Number
+                    <select id="limit">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                    </select>
+                </div>
+
+                <div class="widget">
+                    <p><input type="radio" name="mediaGroup" id="mediaAnime" value="true" /> Anime only</p>
+                    <p><input type="radio" name="mediaGroup" id="mediaManga" value="true" /> Manga only</p>
+                    <p><input type="checkbox" name="mediaGroup" id="mediaSFW" value="SFW" /> Filter out NSFW</p>
+                </div>
             </div>
 
-            <div class="widget">
-                <p><input type="radio" name="mediaGroup" id="mediaAnime" value="true" /> Anime only</p>
-                <p><input type="radio" name="mediaGroup" id="mediaManga" value="true" /> Manga only</p>
-                <p><input type="checkbox" name="mediaGroup" id="mediaSFW" value="SFW" /> Filter out NSFW</p>
+            <div>
+                <button type="button" id="search">GO!</button>
+                <p id="resultText"></p>
+                <button type="button" id="viewList">View List</button>
             </div>
-
-            <button type="button" id="search" class="green">test!</button>
-            <p id="resultText"></p>
         </div>
 
-        <div id="seasonal"></div>
-        <div id="season_past"></div>
-        <div id="top_anime"></div>
-        <div id="top_manga"></div>
-        <div id="searchResults"></div>
+        <div class="user load-home">
+            <h2>My List</h2>
+            <div id="showList"></div>
+        </div>
+
+        <!-- current seasonal anime -->
+        <div class="load-home">
+            <h2>Currently Airing</h2>
+            <div id="seasonal"></div>
+        </div>
+
+        <!-- top anime -->
+        <div class="load-home">
+            <h2>Top Ranked Anime</h2>
+            <div id="top_anime"></div>
+        </div>
+
+        <!-- top manga -->
+        <div class="load-home">
+            <h2>Top Ranked Manga</h2>
+            <div id="top_manga"></div>
+        </div>
+        
+        
+        <div id="searchResults">
+            <h2 id="resultTitle"></h2>
+            <div id="searchGrid"></div>
+        </div>
     </div>
 </body>
 </html>
