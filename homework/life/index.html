@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Life!</title>
+	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+	<link href="main.css" rel="stylesheet">
+    <script src="lifeworld.js"></script>
+</head>
+<body>
+<div id="gridContainer"></div>
+<h1>Life!</h1>
+<select id="colorChooser">
+	<option value="aqua">Aqua</option>
+	<option value="Bisque">Bisque</option>
+	<option value="black">Black</option>
+	<option value="blue">Blue</option>
+	<option value="brown">Brown</option>
+	<option value="chocolate">Chocolate</option>
+	<option value="cyan">Cyan</option>
+	<option value="DarkGray">Dark Gray</option>
+	<option value="green">Green</option>
+	<option value="red" selected>Red</option>
+	<option value="magenta">Magenta</option>
+	<option value="orange">Orange</option>
+	<option value="tan">Tan</option>
+	<option value="white">White</option>
+	<option value="wheat">Wheat</option>
+	<option value="WhiteSmoke">WhiteSmoke </option>
+	<option value="yellow">Yellow</option>
+</select>
+
+<script>
+    // 1 - declaring values to be used later (permanent)
+    const numCols = 70;
+    const numRows = 40;
+    const cellWidth = 10;
+    const cellSpacing = 1;
+
+    // 2 - container holds all cells
+    const container = document.querySelector("#gridContainer");
+
+    // 3 - creating span elements as "cells"
+    const span = document.createElement('span');
+    span.className = 'cell';
+
+    // 4 - declaring array of cells
+    const cells = [];
+
+    // 5 - creates the grid
+    for(let row = 0; row < numRows; row++){
+        cells.push([]);
+        for(let col = 0; col < numCols; col++){
+            let cell = span.cloneNode();
+            cell.style.left = `${col * (cellWidth + cellSpacing)}px`;
+            cell.style.top = `${row * (cellWidth + cellSpacing)}px`;
+            container.appendChild(cell);
+            cells[row][col] = cell;
+        }
+    }
+
+    // 6 - holds the currently selected color
+    let color = "";
+
+    // 7 - single click event that can handle all cells rather than each cell individually
+    container.onclick = fillCell;
+
+    // 8
+    function fillCell(e){
+        let rect = container.getBoundingClientRect();
+        let mouseX = e.clientX - rect.left;
+        let mouseY = e.clientY - rect.top;
+        let columnWidth = cellWidth + cellSpacing;
+        let col = Math.floor(mouseX / columnWidth);
+        let row = Math.floor(mouseY / columnWidth);
+        let selectedCell = cells[row][col];
+        selectedCell.className = 'cellSelected';
+        selectedCell.style.backgroundColor = color;
+        console.log(`${col}, ${row}`);
+    }
+
+    // 9
+    let mouseDown = false;
+
+    // 10
+    container.onmousemove = (e) =>{
+        e.preventDefault();
+        if(mouseDown) fillCell(e);
+    }
+
+    // 11
+    container.onmousedown = (e) =>{
+        e.preventDefault();
+        mouseDown = true;
+    }
+
+    // 12
+    container.onmouseup = (e) =>{
+        e.preventDefault();
+        mouseDown = false;
+    }
+
+    // 13
+    document.querySelector("#colorChooser").onchange = (e) =>{
+
+        color = e.target.value;
+    }
+</script>
+</body>
+</html>
