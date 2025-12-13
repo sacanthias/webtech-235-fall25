@@ -5,16 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project 3 Prototype</title>
     <script src="js/gameinit.js"></script>
-    <link rel="stylesheet" href="/homework/HW-adventure-done/styles/main.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+    <audio id="bumpAudio" src="sfx/bump.mp3" controls></audio>
+    <audio id="waterAudio" src="sfx/blorp.mp3" controls></audio>
+    <audio id="bgMusic" src="sfx/background.mp3" controls></audio>
+    <audio id="loseAudio" src="sfx/lose.mp3" controls></audio>
+    <audio id="winAudio" src="sfx/win.mp3" controls></audio>
+
     <header>
         <h1>FlopQuest</h1>
         <p>A Semi-Aquatic Adventure</p>
     </header>
 
     
-    <div id="gameContainer"></div>
+    <div class="titleScreen" id="startScreen">
+        <div id="instructions">
+            <h2>Instructions</h2>
+            <p>Use WASD to move around and try to get to the end. Watch the water timer up top! If it runs out, you lose!</p>
+        </div>
+        <button id="startBtn" type="button">Start Flopping!</button>
+    </div>
+
+    <div class="titleScreen" id="loseScreen">
+        <h2>Oops!</h2>
+        <p>Your fish flopped! Try again?</p>
+        <button id="retryBtn" type="button">The flop ain't over!</button>
+    </div>
+
+    <div class="titleScreen" id="winScreen">
+        <h2>Victory!</h2>
+        <p>Your fish is healthy and hydrated! Thanks for playing!</p>
+    </div>
+
+    <div id="gameContainer">
+        <div id="stats">
+            Health Remaining:
+            <div id="hpBar">
+                <div id="hpFill"></div>
+            </div>
+        </div>
+
+        <div id="worldContainer"></div>
+    </div>
 
     <script src="js/game.js"></script>
 </body>
