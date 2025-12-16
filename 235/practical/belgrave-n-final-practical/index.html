@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>ArrowMatch Practical</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <h1>ArrowMatch Practical</h1>
+
+  <!-- TODO: add something here, nicely formatted, that explains how to play the game -->
+
+  <div id="score-container">
+    <div class="score-row">
+      <div id="score">Score: 0</div>
+      <button id="restart" class="hidden">Play Again</button>
+    </div>
+  </div>
+
+
+  <div id="game">
+    <div class="cell" id="cell-up" data-dir="0"></div>
+    <div class="cell" id="cell-right" data-dir="1"></div>
+    <div id="pixi-container"></div>
+    <div class="cell" id="cell-down" data-dir="2"></div>
+    <div class="cell" id="cell-left" data-dir="3"></div>
+  </div>
+
+
+
+  <!-- TODO: Move this script to an external script.js file, and call it appropriately.  Note that you'll still have to use type="module" in the script tag that imports the code -->
+  <script type="module" src="src/main.js"></script>
+</body>
+
+</html>
